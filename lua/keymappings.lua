@@ -162,6 +162,9 @@ vim.cmd([[
 ]])
 
 
+--[[--
+--    NERD COMMENT
+--]]
 vim.cmd([[
   "=== NERD COMMENT ===
   " *** Comment actual line or selected
@@ -179,3 +182,10 @@ vim.cmd([[
 
 
 ]])
+
+
+--[[--
+--    COC MARKDOWN
+--]]
+-- Open markdown
+mapper("n", "<Leader>om", ":CocCommand markdown-preview-enhanced.openPreview<CR>");

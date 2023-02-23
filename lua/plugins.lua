@@ -48,6 +48,7 @@ return require('packer').startup(function()
   use {
     'dinhhuy258/git.nvim'
   }
+  use 'tpope/vim-fugitive';
 
 
   --[[ use { ]]
