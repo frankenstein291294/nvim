@@ -17,6 +17,12 @@ return require('packer').startup(function()
   use 'ayu-theme/ayu-vim'
   use 'drewtempelmeyer/palenight.vim'
   use 'morhetz/gruvbox'
+  use "yorik1984/newpaper.nvim"
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
 
   -- Tmux navigator
   use 'christoomey/vim-tmux-navigator'
