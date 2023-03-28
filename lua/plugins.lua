@@ -19,10 +19,15 @@ return require('packer').startup(function()
   use 'morhetz/gruvbox'
   use "yorik1984/newpaper.nvim"
 
+  -- Lua-line
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
+
+  -- Database management
+  use 'tpope/vim-dadbod'
+  use 'kristijanhusak/vim-dadbod-ui'
 
   -- Tmux navigator
   use 'christoomey/vim-tmux-navigator'
@@ -54,7 +59,10 @@ return require('packer').startup(function()
   use {
     'dinhhuy258/git.nvim'
   }
-  use 'tpope/vim-fugitive';
+  use 'tpope/vim-fugitive'
+
+  -- Gisth | git
+  use 'rudylee/nvim-gist'
 
 
   --[[ use { ]]

@@ -21,6 +21,8 @@ require ('plugins/emmet')
 require ('plugins/git-nvim')
 require ('plugins/lualine')
 require ('plugins/self-tabline')
+require ('plugins/vim-dadbod-ui')
+
 --[[ require ('plugins/self-statusline') ]]
 -- require ('plugins/newpaper')
 -- require ('plugins/dashboard')

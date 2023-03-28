@@ -68,6 +68,8 @@ mapper("n", "+", ":m .+1<CR>==")
 mapper("v", "_", ":m '<-2<CR>gv=gv'")
 mapper("v", "+", ":m '>+1<CR>gv=gv'")
 
+mapper("n", "<Leader>dl", ":t.<CR>")
+
 
 
 --[[--
@@ -189,3 +191,12 @@ vim.cmd([[
 --]]
 -- Open markdown
 mapper("n", "<Leader>om", ":CocCommand markdown-preview-enhanced.openPreview<CR>");
+
+--[[--
+--    dadbod-ui
+--]]
+-- Open database management
+mapper("n", "<Leader>nb", ":DBUI<CR>");
+
+
+

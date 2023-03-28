@@ -1,7 +1,7 @@
 vim.cmd([[
 
   "set stl += %{FugitiveStatusline()};
-  set statusline+=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
+  "set statusline+=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
   let g:coc_node_path = '/home/frank/.nvm/versions/node/v16.14.2/bin/node'
   set encoding=utf8
   set nocompatible
