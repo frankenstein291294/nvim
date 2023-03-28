@@ -51,7 +51,7 @@
   use "yorik1984/newpaper.nvim"
   ```
 
-* ##### Themes
+* ##### LuaLine
   ```
   use {
     'nvim-lualine/lualine.nvim',
@@ -83,12 +83,6 @@
     use 'junegunn/fzf.vim'
     ```
 
-  * ###### FZF | fuzzy finder
-    ```
-    use 'junegunn/fzf'
-    use 'junegunn/fzf.vim'
-    ```
-
   * ###### NerdTree
     ```
     use 'scrooloose/nerdtree'
@@ -99,7 +93,7 @@
     use 'kevinhwang91/rnvimr'
     ```
 
-  * ###### Ranger
+  * ###### Dashboard
     ```
     use 'itchyny/vim-gitbranch'
     use 'mhinz/vim-startify'
@@ -138,7 +132,7 @@
     use 'preservim/nerdcommenter'
     ```
 
-  * ###### NerdComment
+  * ###### Multicursors
     ```
     use 'mg979/vim-visual-multi'
     ```
@@ -164,7 +158,7 @@
     use 'norcalli/nvim-colorizer.lua'
     ```
 
-  * ###### Colorizer
+  * ###### Smooth scroll
     ```
     use 'karb94/neoscroll.nvim'
     ```
@@ -185,7 +179,7 @@
     use 'jiangmiao/auto-pairs'
     ```
 
-  * ###### Autopairs
+  * ###### Emmet
     ```
     use 'mattn/emmet-vim'
     ```
@@ -195,7 +189,7 @@
     use 'pangloss/vim-javascript'
     ```
 
-  * ###### JavaScript Syntax
+  * ###### Auto Console log // disable
     ```
     -- use 'metakirby5/codi.vim'
     ```
