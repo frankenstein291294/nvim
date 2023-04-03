@@ -20,10 +20,13 @@ return require('packer').startup(function()
   use "yorik1984/newpaper.nvim"
 
   -- Lua-line
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
+  --[[ use { ]]
+    --[[ 'nvim-lualine/lualine.nvim', ]]
+    --[[ requires = { 'kyazdani42/nvim-web-devicons', opt = true } ]]
+  --[[ } ]]
+
+  use 'vim-airline/vim-airline'
+  use 'vim-airline/vim-airline-themes'
 
   -- Database management
   use 'tpope/vim-dadbod'
