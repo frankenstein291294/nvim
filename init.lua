@@ -24,6 +24,8 @@ require ('plugins/vimairline')
 -- require ('plugins/self-tabline')
 require ('plugins/vim-dadbod-ui')
 
+require ('plugins/floaterm')
+
 --[[ require ('plugins/self-statusline') ]]
 -- require ('plugins/newpaper')
 -- require ('plugins/dashboard')

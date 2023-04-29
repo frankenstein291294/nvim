@@ -50,18 +50,24 @@ vim.cmd([[
   set smartindent
   set expandtab
   set smarttab
-  set sw=2
-  set tabstop=2
-  set shiftwidth=2
-  set softtabstop=2
+  set sw=4
+  set tabstop=4
+  set shiftwidth=4
+  set softtabstop=4
   set laststatus=2
-  set showtabline=2
+  set showtabline=4
   set noshowmode
   set hidden
   set completeopt=menuone,noinsert,noselect
   set lazyredraw
   set guioptions+=a
-  set guifont="monospace:h17"
+  "set guifont="monospace:h17"
+
+  if has("gui_running")
+    set guifont=Menlo:h12
+  else
+    let g:CSApprox_loaded = 1
+
   set sidescrolloff=8
   set title
 
