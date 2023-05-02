@@ -133,6 +133,9 @@ return require('packer').startup(function()
     -- Sintax JavaScript
     use 'pangloss/vim-javascript'
 
+    -- React Sintax
+    use 'neoclide/vim-jsx-improve'
+
     -- use 'metakirby5/codi.vim'
     use 'joukevandermaas/vim-ember-hbs'
 
