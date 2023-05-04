@@ -1,38 +1,53 @@
-vim.cmd([[
-  set termguicolors
-  set background=dark
-  let g:rehash256 = 1
-  set t_Co=256
-  let g:one_allow_italics = 1
-
-  " SETTING AYU || light, dark, mirage
-  "let ayucolor="mirage" 
-
-  "colorscheme palenight
-  colorscheme dracula
 
 
-  "=== COFIG ENV if we don't has a colorscheme
-  hi Normal ctermbg=NONE
-  hi Folded cterm=NONE ctermbg=Black ctermfg=White
-  hi Comment gui=italic
+vim.o.termguicolors = true
+vim.o.background = 'dark'
+vim.g.rehash256 = 1
+vim.o.t_Co = 256
+vim.g.one_allow_italics = 1
 
 
-  "=== CURSOR
-  hi! Cursor ctermbg=Red guibg=Red ctermfg=Red guifg=Red
+--[[ ------------------
+-- ColorSchema settings
+---------------------]]
+
+-- SETTING AYU || light, dark, mirage
+-- vim.g.ayucolor="mirage"
+-- vim.cmd('colorscheme ayu')
+
+-- vim.cmd('colorscheme molokai')
+
+-- vim.cmd('colorscheme one')
+
+-- Available values: 'hard', 'medium'(default), 'soft'
+vim.g.gruvbox_material_background = 'hard'
+vim.cmd('colorscheme gruvbox-material')
+
+-- vim.cmd('colorscheme dracula')
 
 
-  "=== CURSORLINE
-  set cursorline
-  hi CursorLine ctermbg=Black guibg=#152215
-  hi CursorLineNr ctermbg=Black
-  hi LineNr ctermbg=Black
+--[[ ------------------
+-- ColorSchema settings
+---------------------]]
 
 
-  "=== COLOR COLUMN
-  set colorcolumn=80
-  "hi ColorColumn ctermbg=Black guibg=black
+--=== COFIG ENV if we don't has a colorscheme
+vim.cmd('hi Normal ctermbg=NONE')
+vim.cmd('hi Folded cterm=NONE ctermbg=Black ctermfg=White')
+vim.cmd('hi Comment gui=italic')
 
+--=== CURSOR
+vim.cmd('hi! Cursor ctermbg=Red guibg=Red ctermfg=Red guifg=Red')
 
-  hi SpellBad guibg=#D00000 guifg=#ffffff
-]])
+--=== CURSORLINE
+vim.o.cursorline = true
+vim.cmd('hi CursorLine ctermbg=green guibg=#152215')
+vim.cmd('hi CursorLineNr ctermbg=Black')
+vim.cmd('hi LineNr ctermbg=Black')
+
+--=== COLOR COLUMN
+vim.o.colorcolumn = 80
+vim.cmd('hi ColorColumn ctermbg=Black guibg=black')
+
+vim.cmd('hi SpellBad guibg=#D00000 guifg=#ffffff')
+

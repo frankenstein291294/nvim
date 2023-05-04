@@ -15,9 +15,8 @@ return require('packer').startup(function()
     use 'tomasr/molokai'
     use 'rakr/vim-one'
     use 'ayu-theme/ayu-vim'
-    use 'drewtempelmeyer/palenight.vim'
     use 'morhetz/gruvbox'
-    use "yorik1984/newpaper.nvim"
+    use 'sainnhe/gruvbox-material'
 
     -- Lua-line
     --[[ use { ]]
@@ -135,6 +134,10 @@ return require('packer').startup(function()
 
     -- React Sintax
     use 'neoclide/vim-jsx-improve'
+
+    -- Snippets to javascript
+    use 'SirVer/ultisnips'
+    use 'mlaursen/vim-react-snippets'
 
     -- use 'metakirby5/codi.vim'
     use 'joukevandermaas/vim-ember-hbs'

@@ -1,74 +1,60 @@
-vim.cmd([[
 
-  "set stl += %{FugitiveStatusline()};
-  "set statusline+=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
-  let g:coc_node_path = '/home/frank/.nvm/versions/node/v16.14.2/bin/node'
-  set encoding=utf8
-  set nocompatible
-  set spelllang=en_us
-  filetype plugin indent on
-  syntax enable
+vim.g.coc_node_path = '/home/frank/.nvm/versions/node/v16.14.2/bin/node'
+vim.o.encoding = 'utf-8'
+vim.o.compatible = false
+vim.o.spelllang = 'en_us'
+vim.cmd('filetype plugin indent on')
+vim.cmd('syntax enable')
 
-  set nobackup
-  set noswapfile
-  set nowritebackup
-  set updatetime=100
-  set shortmess+=c
-  set clipboard+=unnamedplus
-  set mouse=a 
-  set number
-  set relativenumber
-  set numberwidth=4
-  set wrap
-  set showmatch
-  set linebreak
+vim.opt.backup = false
+vim.opt.swapfile = false
+vim.opt.writebackup = false
+vim.opt.updatetime = 100
+vim.opt.shortmess:append('c')
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.mouse = 'a'
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.numberwidth = 4
+vim.opt.wrap = true
+vim.opt.showmatch = true
+vim.opt.linebreak = true
 
-  "set scrolljump=5
-  set scrolloff=3
-  set signcolumn=yes
-  set cmdheight=1
-  set foldenable
-  set foldmethod=manual
-  set splitbelow
-  set splitright
+--vim.opt.scrolljump = 5
+vim.opt.scrolloff = 3
+vim.opt.signcolumn = 'yes'
+vim.opt.cmdheight = 1
+vim.opt.foldenable = true
+vim.opt.foldmethod = 'manual'
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
-  "set list
-  set listchars=tab:▶\
-  set listchars+=trail:.
-  set listchars+=space:.
-  set listchars+=eol:↴
-  set path+=**
-  set linespace=5
+vim.opt.list = false
+vim.opt.listchars:append({ tab = '▶\\', trail = '.', space = '.', eol = '↴' })
+vim.opt.path:append('**')
+vim.opt.linespace = 5
 
-  set wildmode=longest,list,full
-  set ruler
-  set rulerformat=%15(%c%V\ %p%%%)
-  set ignorecase
-  set smartcase
-  set incsearch
-  set autoindent
-  set smartindent
-  set expandtab
-  set smarttab
-  set sw=4
-  set tabstop=4
-  set shiftwidth=4
-  set softtabstop=4
-  set laststatus=2
-  set showtabline=4
-  set noshowmode
-  set hidden
-  set completeopt=menuone,noinsert,noselect
-  set lazyredraw
-  set guioptions+=a
-  "set guifont="monospace:h17"
+vim.opt.wildmode = {'longest', 'list', 'full'}
+vim.opt.ruler = true
+vim.opt.rulerformat = '%15(%c%V\\ %p%%%)'
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.incsearch = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.expandtab = true
+vim.opt.smarttab = true
+vim.opt.sw = 4
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.laststatus = 2
+vim.opt.showtabline = 4
+vim.opt.showmode = false
+vim.opt.hidden = true
+vim.opt.completeopt = {'menuone', 'noinsert', 'noselect'}
+vim.opt.lazyredraw = true
 
-  if has("gui_running")
-    set guifont=Menlo:h12
-  else
-    let g:CSApprox_loaded = 1
+vim.opt.sidescrolloff = 8
+vim.opt.title = true
 
-  set sidescrolloff=8
-  set title
-
-]])
