@@ -22,6 +22,7 @@ require ('plugins/emmet')
 require ('plugins/git-nvim')
 require ('plugins/vimairline')
 require ('plugins/vim-dadbod-ui')
+require ('plugins/sql-server-language')
 require ('plugins/floaterm')
 
 -- require ('plugins/self-tabline')
