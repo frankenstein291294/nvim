@@ -1,5 +1,4 @@
 
-
 vim.o.termguicolors = true
 vim.o.background = 'dark'
 vim.g.rehash256 = 1
@@ -12,16 +11,16 @@ vim.g.one_allow_italics = 1
 ---------------------]]
 
 -- SETTING AYU || light, dark, mirage
--- vim.g.ayucolor="mirage"
--- vim.cmd('colorscheme ayu')
+vim.g.ayucolor="mirage"
+vim.cmd('colorscheme ayu')
 
 -- vim.cmd('colorscheme molokai')
 
 -- vim.cmd('colorscheme one')
 
 -- Available values: 'hard', 'medium'(default), 'soft'
-vim.g.gruvbox_material_background = 'hard'
-vim.cmd('colorscheme gruvbox-material')
+--vim.g.gruvbox_material_background = 'hard'
+-- vim.cmd('colorscheme gruvbox-material')
 
 -- vim.cmd('colorscheme dracula')
 
@@ -29,6 +28,7 @@ vim.cmd('colorscheme gruvbox-material')
 --[[ ------------------
 -- ColorSchema settings
 ---------------------]]
+
 
 
 --=== COFIG ENV if we don't has a colorscheme
