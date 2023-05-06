@@ -11,10 +11,10 @@ vim.g.one_allow_italics = 1
 ---------------------]]
 
 -- SETTING AYU || light, dark, mirage
-vim.g.ayucolor="mirage"
-vim.cmd('colorscheme ayu')
+--vim.g.ayucolor="mirage"
+--vim.cmd('colorscheme ayu')
 
--- vim.cmd('colorscheme molokai')
+ vim.cmd('colorscheme molokai')
 
 -- vim.cmd('colorscheme one')
 
