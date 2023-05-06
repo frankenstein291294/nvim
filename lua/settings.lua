@@ -34,7 +34,6 @@ vim.opt.listchars:append({ tab = '▶\\', trail = '.', space = '.', eol = '↴' 
 vim.opt.path:append('**')
 vim.opt.linespace = 5
 
-vim.opt.wildmode = {'longest', 'list', 'full'}
 vim.opt.ruler = true
 vim.opt.rulerformat = '%15(%c%V\\ %p%%%)'
 vim.opt.ignorecase = true
@@ -52,9 +51,9 @@ vim.opt.laststatus = 2
 vim.opt.showtabline = 4
 vim.opt.showmode = false
 vim.opt.hidden = true
-vim.opt.completeopt = {'menuone', 'noinsert', 'noselect'}
+vim.opt.completeopt = {'menuone,noinsert,noselect'}
+--vim.opt.wildmode = {'longest', 'list', 'full'}
 vim.opt.lazyredraw = true
 
 vim.opt.sidescrolloff = 8
 vim.opt.title = true
-
