@@ -45,7 +45,7 @@ mapper("n", "<Leader>t", ":tabnew<CR>")
 --]]
 --Open split vertical
 mapper("n", "<Leader>v", ":vsp<CR>")
---Open split horizontal 
+--Open split horizontal
 mapper("n", "<Leader>x", ":sp<CR>")
 --Open split konsole
 mapper("n", "<Leader>sh", ":split<CR>:ter<CR>:resize 10<CR>")
@@ -101,7 +101,7 @@ mapper("n", "<F12>b", ":exe ':silent !brave % &'<CR>")
 --[[--
 --    OPEN FILES CONF
 --]]
---Open file conf of lua 
+--Open file conf of lua
 mapper("n", "<F4>", ":e ~/.config/nvim/init.lua<CR>")
 
 
@@ -188,3 +188,11 @@ mapper("n", "<Leader>om", ":CocCommand markdown-preview-enhanced.openPreview<CR>
 --]]
 -- Open database management
 mapper("n", "<Leader>nb", ":DBUI<CR>");
+
+--[[
+-- Comfortable motion
+--]]
+vim.g.comfortable_motion_scroll_down_key = "j"
+vim.g.comfortable_motion_scroll_up_key = "k"
+mapper('n', '<ScrollWheelDown>', ':call comfortable_motion#flick(30)<CR>')
+mapper('n', '<ScrollWheelUp>', ':call comfortable_motion#flick(-30)<CR>')

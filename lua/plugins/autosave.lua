@@ -4,7 +4,16 @@ require("auto-save").setup (
     enabled = true, -- start auto-save when the plugin is loaded (i.e. when your package manager loads it)
     execution_message = {
       message = function() -- message to print on save
-        return ("Autosave: File saved at " .. vim.fn.strftime("%H:%M:%S"))
+
+          vim.notify = require('notify')
+          local plugin = "Saved successfully"
+
+          vim.notify("Autosave: File saved at " .. vim.fn.strftime("%H:%M:%S"), "success", {
+              title = plugin,
+              timeout = 50,
+          })
+
+          return ("Autosave: File saved at " .. vim.fn.strftime("%H:%M:%S"))
       end,
       dim = 0.18, -- dim the color of `message`
       cleaning_interval = 1250, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea

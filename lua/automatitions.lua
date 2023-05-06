@@ -13,12 +13,20 @@ vim.cmd([[
   augroup END
 ]])
 
-
 -- Mark when selected something with yank
-vim.cmd([[
-    augroup AuYank
-        autocmd!
-        autocmd TextYankPost *
-        \ lua vim.highlight.on_yank{higroup="IncSearch", timeout=500, on_visual=true}
-    augroup END
-]])
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank({timeout=500})
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
+--[[ vim.cmd([[ ]]
+    --[[ augroup AuYank ]]
+    --[[     autocmd! ]]
+    --[[     autocmd TextYankPost * ]]
+    --[[     \ lua vim.highlight.on_yank{higroup="IncSearch", timeout=500, on_visual=true} ]]
+    --[[ augroup END ]]
+--[[ <]) ]]

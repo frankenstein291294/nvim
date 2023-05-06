@@ -24,6 +24,7 @@ return require('packer').startup(function()
     --[[ requires = { 'kyazdani42/nvim-web-devicons', opt = true } ]]
     --[[ } ]]
 
+    use 'rcarriga/nvim-notify'
     use 'vim-airline/vim-airline'
     use 'vim-airline/vim-airline-themes'
 
@@ -83,7 +84,7 @@ return require('packer').startup(function()
     -- Bookmarks
     use 'MattesGroeger/vim-bookmarks'
 
-    -- Load config depend on current directory 
+    -- Load config depend on current directory
     use 'windwp/nvim-projectconfig'
 
     -- AutofileName
@@ -111,6 +112,7 @@ return require('packer').startup(function()
     use 'norcalli/nvim-colorizer.lua'
 
     -- Smooth scroll
+    use 'yuttie/comfortable-motion.vim'
     use 'karb94/neoscroll.nvim'
 
     -- Indent blank line
