@@ -17,6 +17,7 @@ return require('packer').startup(function()
     use 'ayu-theme/ayu-vim'
     use 'morhetz/gruvbox'
     use 'sainnhe/gruvbox-material'
+    use({ "catppuccin/nvim", as = "catppuccin" })
 
     -- Lua-line
     --[[ use { ]]
