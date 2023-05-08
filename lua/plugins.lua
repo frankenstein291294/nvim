@@ -1,39 +1,48 @@
 
--- Only required if you have packer configured as `opt`
---vim.cmd [[packadd packer.nvim]]
+vim.cmd.packadd("packer.nvim")
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
 
-    --[[
-    --  THEME
-    --]]
-    -- Dracula
-    use {'dracula/vim', as = 'dracula'}
-    use 'tomasr/molokai'
-    use 'rakr/vim-one'
-    use 'ayu-theme/ayu-vim'
-    use 'drewtempelmeyer/palenight.vim'
-    use 'morhetz/gruvbox'
-    use "yorik1984/newpaper.nvim"
+    -- Theme
+    use({ "catppuccin/nvim", as = "catppuccin" })
 
-    -- Lua-line
-    --[[ use { ]]
-    --[[ 'nvim-lualine/lualine.nvim', ]]
-    --[[ requires = { 'kyazdani42/nvim-web-devicons', opt = true } ]]
-    --[[ } ]]
+    -- Treesitter
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
+    -- Lsp
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v2.x',
+        requires = {
+            -- LSP Support
+            {'neovim/nvim-lspconfig'},             -- Required
+            {                                      -- Optional
+            'williamboman/mason.nvim',
+            run = function()
+                pcall(vim.cmd, 'MasonUpdate')
+            end,
+            },
+            {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},     -- Required
+            {'hrsh7th/cmp-nvim-lsp'}, -- Required
+            {'L3MON4D3/LuaSnip'},     -- Required
+            {'hrsh7th/vim-vsnip'},
+        },
+
+    }
+
+    use 'rcarriga/nvim-notify'
     use 'vim-airline/vim-airline'
     use 'vim-airline/vim-airline-themes'
 
     -- Database management
     use 'tpope/vim-dadbod'
     use 'kristijanhusak/vim-dadbod-ui'
-
-    -- Tmux navigator
-    use 'christoomey/vim-tmux-navigator'
 
     -- Icons
     use 'ryanoasis/vim-devicons'
@@ -58,11 +67,28 @@ return require('packer').startup(function()
     use 'itchyny/vim-gitbranch'
     use 'mhinz/vim-startify'
 
-    -- Git
-    use {
-        'dinhhuy258/git.nvim'
-    }
+
+
+    -- Git related plugins
     use 'tpope/vim-fugitive'
+    use 'tpope/vim-rhubarb'
+    use 'rudylee/nvim-gist'
+    use {
+        -- Adds git releated signs to the gutter, as well as utilities for managing changes
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup{
+                signs = {
+                    add = { text = '+' },
+                    change = { text = '~' },
+                    delete = { text = '_' },
+                    topdelete = { text = '‾' },
+                    changedelete = { text = '~' },
+                },
+            }
+        end
+    }
+
 
     -- Gisth | git
     use 'rudylee/nvim-gist'
@@ -70,28 +96,14 @@ return require('packer').startup(function()
     -- Vim Flaterm
     use 'voldikss/vim-floaterm'
 
-    --[[ use { ]]
-    --[[ 'glepnir/dashboard-nvim', ]]
-    --[[ event = 'VimEnter', ]]
-    --[[ config = function() ]]
-    --[[   require('dashboard').setup { ]]
-    --[[     -- config ]]
-    --[[   } ]]
-    --[[ end, ]]
-    --[[ requires = {'nvim-tree/nvim-web-devicons'} ]]
-    --[[ } ]]
-
     -- Bookmarks
     use 'MattesGroeger/vim-bookmarks'
 
-    -- Load config depend on current directory 
+    -- Load config depend on current directory
     use 'windwp/nvim-projectconfig'
 
-    -- AutofileName
-    use 'boundincode/autofilename'
-
-    -- NerdComment
-    use 'preservim/nerdcommenter'
+    -- Comment
+    use 'numToStr/Comment.nvim'
 
     -- Multicursors
     use 'mg979/vim-visual-multi'
@@ -112,6 +124,7 @@ return require('packer').startup(function()
     use 'norcalli/nvim-colorizer.lua'
 
     -- Smooth scroll
+    use 'yuttie/comfortable-motion.vim'
     use 'karb94/neoscroll.nvim'
 
     -- Indent blank line
@@ -121,9 +134,6 @@ return require('packer').startup(function()
     --[[
     --  SYNTAX
     --]]
-    -- Conquer of completion
-    use 'neoclide/coc.nvim'
-
     -- Autopairs
     use 'jiangmiao/auto-pairs'
 
@@ -136,7 +146,10 @@ return require('packer').startup(function()
     -- React Sintax
     use 'neoclide/vim-jsx-improve'
 
-    -- use 'metakirby5/codi.vim'
+    -- Snippets to javascript
+    use 'SirVer/ultisnips'
+    use 'mlaursen/vim-react-snippets'
+
     use 'joukevandermaas/vim-ember-hbs'
 
 

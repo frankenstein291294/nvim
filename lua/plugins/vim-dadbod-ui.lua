@@ -1,3 +1,4 @@
+
 vim.g.db_ui_icons = {
   expanded = {
     db = ' ',
@@ -7,7 +8,7 @@ vim.g.db_ui_icons = {
     schema = ' ',
     tables = ' ',
     table = ' '
-  }, 
+  },
   collapsed = {
     db = ' ',
     buffers = ' ',
@@ -18,4 +19,3 @@ vim.g.db_ui_icons = {
     table = ' '
   }
 }
-

@@ -1,3 +1,6 @@
+--Key leader
+vim.g.mapleader = ';'
+
 --[[--
 --    FUNTION TO MAPPING
 --]]
@@ -9,13 +12,6 @@ end
 --[[--
 --    GLOBAL MAPPING
 --]]
-
---Key leader
-vim.g.mapleader = ';'
-
---MODES
---nmap => n
---
 
 --Save File
 mapper("n", "<Leader>w", ":w<CR>")
@@ -45,7 +41,7 @@ mapper("n", "<Leader>t", ":tabnew<CR>")
 --]]
 --Open split vertical
 mapper("n", "<Leader>v", ":vsp<CR>")
---Open split horizontal 
+--Open split horizontal
 mapper("n", "<Leader>x", ":sp<CR>")
 --Open split konsole
 mapper("n", "<Leader>sh", ":split<CR>:ter<CR>:resize 10<CR>")
@@ -101,7 +97,7 @@ mapper("n", "<F12>b", ":exe ':silent !brave % &'<CR>")
 --[[--
 --    OPEN FILES CONF
 --]]
---Open file conf of lua 
+--Open file conf of lua
 mapper("n", "<F4>", ":e ~/.config/nvim/init.lua<CR>")
 
 
@@ -146,44 +142,35 @@ mapper("n", "<Leader>sd", ":SDelete<CR>");
 --[[--
 --    BOOKMARKS
 --]]
-
-vim.cmd([[
-  "=== Bookmarks ===
-  let g:bookmark_no_default_key_mappings = 0
-
-  nmap <Leader>bm <Plug>BookmarkToggle
-  nmap <Leader>bi <Plug>BookmarkAnnotate
-  nmap <Leader>ba <Plug>BookmarkShowAll
-  nmap <Leader>bj <Plug>BookmarkNext
-  nmap <Leader>bk <Plug>BookmarkPrev
-  nmap <Leader>bc <Plug>BookmarkClear
-  nmap <Leader>bx <Plug>BookmarkClearAll
-  nmap <Leader>kk <Plug>BookmarkMoveUp
-  nmap <Leader>jj <Plug>BookmarkMoveDown
-  nmap <Leader>gg <Plug>BookmarkMoveToLine
-]])
+vim.g.bookmark_no_default_key_mappings = 0
+mapper('n', '<Leader>bm', '<Plug>BookmarkToggle')
+mapper('n', '<Leader>bi', '<Plug>BookmarkAnnotate')
+mapper('n', '<Leader>ba', '<Plug>BookmarkShowAll')
+mapper('n', '<Leader>bj', '<Plug>BookmarkNext')
+mapper('n', '<Leader>bk', '<Plug>BookmarkPrev')
+mapper('n', '<Leader>bc', '<Plug>BookmarkClear')
+mapper('n', '<Leader>bx', '<Plug>BookmarkClearAll')
+mapper('n', '<Leader>kk', '<Plug>BookmarkMoveUp')
+mapper('n', '<Leader>jj', '<Plug>BookmarkMoveDown')
+mapper('n', '<Leader>gg', '<Plug>BookmarkMoveToLine')
 
 
 --[[--
 --    NERD COMMENT
 --]]
-vim.cmd([[
-  "=== NERD COMMENT ===
-  " *** Comment actual line or selected
-  nmap <Leader>cc NERDCommenterComment<CR>
-  " *** Equal of cc but anidate
-  nmap <Leader>cn NERDCommenterNested<CR>
-  " *** Comment selected line with a pretty design with block format
-  nmap <Leader>cy NERDCommenterYank<CR>
-  " *** Comment the actual line since cursor to final
-  nmap <Leader>c$ NERDCommenterToEOL<CR>
-  " *** Add delimiter of comment to final of line and go mode of insert
-  nmap <Leader>cA NERDCommenterAppend<CR>
-  " *** Delete comment of lineDCommenterComment
-  nmap <Leader>cu NERDCommenterUncomment<CR>
-
-
-]])
+--=== NERD COMMENT ===
+-- *** Comment actual line or selected
+mapper('n', '<Leader>cc', 'NERDCommenterComment<CR>')
+-- *** Equal of cc but anidate
+mapper('n', '<Leader>cn', 'NERDCommenterNested<CR>')
+-- *** Comment selected line with a pretty design with block format
+mapper('n', '<Leader>cy', 'NERDCommenterYank<CR>')
+-- *** Comment the actual line since cursor to final
+mapper('n', '<Leader>c$', 'NERDCommenterToEOL<CR>')
+-- *** Add delimiter of comment to final of line and go mode of insert
+mapper('n', '<Leader>cA', 'NERDCommenterAppend<CR>')
+-- *** Delete comment of lineDCommenterComment
+mapper('n', '<Leader>cu', 'NERDCommenterUncomment<CR>')
 
 
 --[[--
@@ -198,5 +185,10 @@ mapper("n", "<Leader>om", ":CocCommand markdown-preview-enhanced.openPreview<CR>
 -- Open database management
 mapper("n", "<Leader>nb", ":DBUI<CR>");
 
-
-
+--[[
+-- Comfortable motion
+--]]
+vim.g.comfortable_motion_scroll_down_key = "j"
+vim.g.comfortable_motion_scroll_up_key = "k"
+mapper('n', '<ScrollWheelDown>', ':call comfortable_motion#flick(30)<CR>')
+mapper('n', '<ScrollWheelUp>', ':call comfortable_motion#flick(-30)<CR>')
