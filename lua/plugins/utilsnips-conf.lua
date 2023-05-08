@@ -1,3 +1,3 @@
 
--- vim.g.UtilSnipsExpandTrigger = '<CR>'
-vim.g.UtilSnipsExpandTrigger = '<C-l>'
+vim.g.UtilSnipsExpandTrigger = '<tab>'
+vim.g.UltiSnipsSnippetDirectories = {"UltiSnips", "vim-react-snippets/snippets"}

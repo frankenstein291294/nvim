@@ -11,23 +11,15 @@ lsp.ensure_installed({
   'eslint',
 })
 
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-
-lsp.nvim_workspace()
-lsp.set_preferences({
-  suggest_lsp_servers = false,
-  set_lsp_keymaps = { omit = { '<C-k>' } },
-  sign_icons = {
-    error = '✘', -- 'E'
-    warn = '▲', -- 'W'
-    hint = '⚑', -- 'H'
-    info = "I", -- 'I'
-  }
-})
 lsp.setup()
 
 
 -- config to autocompletion - 'hrsh7th/nvim-cmp'
+-- Set snippet engine to UltiSnips
+vim.g.completion_enable_snippet = 'UltiSnips'
+-- Load JavaScript snippets from directory
+-- vim.g.UltiSnipsSnippetDirectories = {'~/.config/nvim/snippets/javascript'}
+
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 local luasnip = require('luasnip')
@@ -44,6 +36,7 @@ cmp.setup({
         {name = 'vsnip'},
         {name = 'buffer', keyword_length = 3},
         {name = 'luasnip', keyword_length = 2},
+        {name =  'UltiSnips'}
     },
     mapping = {
         -- `Enter` key to confirm completion

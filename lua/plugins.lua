@@ -70,7 +70,6 @@ return require('packer').startup(function(use)
     -- Git related plugins
     use 'tpope/vim-fugitive'
     use 'tpope/vim-rhubarb'
-    use 'rudylee/nvim-gist'
 
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     use 'lewis6991/gitsigns.nvim'

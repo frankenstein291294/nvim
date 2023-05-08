@@ -15,6 +15,7 @@ require('plugins.nerd-comment')
 require('plugins.neoscroll')
 require('plugins.indent-blankline')
 require('plugins.snippets')
+require('plugins.utilsnips-conf')
 
 require('plugins.emmet')
 require('plugins.vim-airline')
