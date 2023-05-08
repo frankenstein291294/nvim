@@ -192,3 +192,4 @@ vim.g.comfortable_motion_scroll_down_key = "j"
 vim.g.comfortable_motion_scroll_up_key = "k"
 mapper('n', '<ScrollWheelDown>', ':call comfortable_motion#flick(30)<CR>')
 mapper('n', '<ScrollWheelUp>', ':call comfortable_motion#flick(-30)<CR>')
+

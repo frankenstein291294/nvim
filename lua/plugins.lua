@@ -5,7 +5,6 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-
     -- Theme
     use({ "catppuccin/nvim", as = "catppuccin" })
 
@@ -21,9 +20,7 @@ return require('packer').startup(function(use)
             {'neovim/nvim-lspconfig'},             -- Required
             {                                      -- Optional
             'williamboman/mason.nvim',
-            run = function()
-                pcall(vim.cmd, 'MasonUpdate')
-            end,
+            run = ':MasonUpdate',
             },
             {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
@@ -31,7 +28,7 @@ return require('packer').startup(function(use)
             {'hrsh7th/nvim-cmp'},     -- Required
             {'hrsh7th/cmp-nvim-lsp'}, -- Required
             {'L3MON4D3/LuaSnip'},     -- Required
-            {'hrsh7th/vim-vsnip'},
+
         },
 
     }
@@ -43,6 +40,9 @@ return require('packer').startup(function(use)
     -- Database management
     use 'tpope/vim-dadbod'
     use 'kristijanhusak/vim-dadbod-ui'
+
+    -- Tmux-navigator
+    use 'christoomey/vim-tmux-navigator'
 
     -- Icons
     use 'ryanoasis/vim-devicons'
@@ -67,30 +67,15 @@ return require('packer').startup(function(use)
     use 'itchyny/vim-gitbranch'
     use 'mhinz/vim-startify'
 
-
-
     -- Git related plugins
     use 'tpope/vim-fugitive'
     use 'tpope/vim-rhubarb'
     use 'rudylee/nvim-gist'
-    use {
-        -- Adds git releated signs to the gutter, as well as utilities for managing changes
-        'lewis6991/gitsigns.nvim',
-        config = function()
-            require('gitsigns').setup{
-                signs = {
-                    add = { text = '+' },
-                    change = { text = '~' },
-                    delete = { text = '_' },
-                    topdelete = { text = '‾' },
-                    changedelete = { text = '~' },
-                },
-            }
-        end
-    }
 
+    -- Adds git releated signs to the gutter, as well as utilities for managing changes
+    use 'lewis6991/gitsigns.nvim'
 
-    -- Gisth | git
+    -- Gisth | giDCommenterNested
     use 'rudylee/nvim-gist'
 
     -- Vim Flaterm
@@ -102,8 +87,11 @@ return require('packer').startup(function(use)
     -- Load config depend on current directory
     use 'windwp/nvim-projectconfig'
 
+    -- NerdComment
+    use 'preservim/nerdcommenter'
+
     -- Comment
-    use 'numToStr/Comment.nvim'
+    --use 'numToStr/Comment.nvim'
 
     -- Multicursors
     use 'mg979/vim-visual-multi'

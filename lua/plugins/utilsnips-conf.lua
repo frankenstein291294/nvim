@@ -1,2 +1,3 @@
 
-vim.g.UtilSnipsExpandTrigger = '<tab>'
+-- vim.g.UtilSnipsExpandTrigger = '<CR>'
+vim.g.UtilSnipsExpandTrigger = '<C-l>'
