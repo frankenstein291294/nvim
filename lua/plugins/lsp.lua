@@ -23,6 +23,7 @@ vim.g.completion_enable_snippet = 'UltiSnips'
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 local luasnip = require('luasnip')
+require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
     snippet = {
@@ -39,16 +40,10 @@ cmp.setup({
         {name =  'UltiSnips'}
     },
     mapping = {
-        -- `Enter` key to confirm completion
         ['<CR>'] = cmp.mapping.confirm({select = false}),
-
-        -- Ctrl+Space to trigger completion menu
         ['<C-Space>'] = cmp.mapping.complete(),
-
-        -- Navigate between snippet placeholder
         ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-
     },
     completion = {
       completeopt = 'menu,menuone,noinsert',
