@@ -141,8 +141,8 @@ return require('packer').startup(function(use)
     use 'neoclide/vim-jsx-improve'
 
     -- Snippets to javascript
-    use 'SirVer/ultisnips'
-    use 'mlaursen/vim-react-snippets'
+    --use 'SirVer/ultisnips'
+    --use 'mlaursen/vim-react-snippets'
 
     use 'joukevandermaas/vim-ember-hbs'
 

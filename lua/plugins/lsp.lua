@@ -32,12 +32,11 @@ cmp.setup({
         end,
     },
     sources = {
-        {name = 'path'},
+        {name = 'luasnip'},
         {name = 'nvim_lsp'},
-        {name = 'vsnip'},
         {name = 'buffer', keyword_length = 3},
-        {name = 'luasnip', keyword_length = 2},
-        {name =  'UltiSnips'}
+        {name = 'vsnip'},
+        {name = 'path'},
     },
     mapping = {
         ['<CR>'] = cmp.mapping.confirm({select = false}),
