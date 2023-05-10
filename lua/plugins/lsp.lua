@@ -14,15 +14,7 @@ lsp.ensure_installed({
 lsp.setup()
 
 
--- config to autocompletion - 'hrsh7th/nvim-cmp'
--- Set snippet engine to UltiSnips
-vim.g.completion_enable_snippet = 'UltiSnips'
--- Load JavaScript snippets from directory
--- vim.g.UltiSnipsSnippetDirectories = {'~/.config/nvim/snippets/javascript'}
-
 local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
-local luasnip = require('luasnip')
 require('luasnip.loaders.from_vscode').lazy_load()
 
 cmp.setup({
