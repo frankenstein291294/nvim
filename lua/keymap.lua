@@ -108,12 +108,12 @@ mapper("n", "<Leader>e", ":Files<CR>")
 
 
 --[[--
---    NERDTree
+--    Nvim tree
 --]]
---Open nerdtree
-mapper("n", "<Leader>nt", ":NERDTreeFind<CR>")
---Reload nerdtree
-mapper("n", "<Leader>nr", ":NERDTreeRefreshRoot<CR>")
+mapper("n", "<Leader>nt", ":NvimTreeToggle<CR>")
+mapper("n", "<Leader>nr", ":NvimTreeFocus<CR>")
+mapper("n", "<Leader>nf", ":NvimTreeFindFile<CR>")
+mapper("n", "<Leader>nc", ":NvimTreeCollapse<CR>")
 
 
 --[[--

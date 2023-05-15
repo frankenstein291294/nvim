@@ -7,7 +7,7 @@ require('plugins.treesitter')
 require('plugins.lsp')
 require('plugins.theme')
 
-require('plugins.nerdtree')
+require('plugins.nvim-tree')
 require('plugins.ranger')
 require('plugins.bookmarks')
 

@@ -6,7 +6,8 @@ function UseColorScheme(color)
     vim.o.t_Co = 256
     vim.g.one_allow_italics = 1
 
-	color = color or 'catppuccin'
+    color = color or 'catppuccin'
+	-- color = color or 'kanagawa'
 	vim.cmd.colorscheme(color)
 
 

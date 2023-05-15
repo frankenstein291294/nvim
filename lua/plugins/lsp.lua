@@ -2,13 +2,14 @@
 local lsp = require('lsp-zero').preset({})
 
 lsp.on_attach(function(client, bufnr)
-  lsp.default_keymaps({buffer = bufnr})
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+    lsp.default_keymaps({buffer = bufnr})
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, {})
 end)
 
 lsp.ensure_installed({
-  'tsserver',
-  'eslint',
+    'tsserver',
+    'eslint',
 })
 
 lsp.setup()
@@ -37,8 +38,8 @@ cmp.setup({
         ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
     },
     completion = {
-      completeopt = 'menu,menuone,noinsert',
-      preselect = 'always',
+        completeopt = 'menu,menuone,noinsert',
+        preselect = 'always',
     },
     sorting = {
         priority_weight = 2,
