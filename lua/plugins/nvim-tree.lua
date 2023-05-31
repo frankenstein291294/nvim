@@ -16,3 +16,24 @@ require("nvim-tree").setup({
     dotfiles = true,
   },
 })
+
+
+--[[
+vim.g.nvim_tree_bindings = {
+   { key = "I", cb = "toggle_ignored" },
+   { key = "H", cb = "toggle_dotfiles" },
+   { key = "h", cb = "toggle_files" },
+   { key = "R", cb = "refresh" },
+   { key = "<TAB>", cb = "preview" },
+   { key = "<C-CR>", cb = "cd" },
+   { key = "B", cb = "bookmarks" },
+   { key = "b", cb = "add_bookmark" },
+   { key = "d", cb = "remove_bookmark" },
+   { key = "E", cb = "edit" },
+   { key = "v", cb = "split" },
+   { key = "s", cb = "vsplit" },
+   { key = "t", cb = "tabnew" },
+   { key = "l", cb = "set_focus" },
+}
+]]--
+

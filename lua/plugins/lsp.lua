@@ -4,8 +4,11 @@ local lsp = require('lsp-zero').preset({})
 lsp.on_attach(function(client, bufnr)
     lsp.default_keymaps({buffer = bufnr})
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.hover, {})
+    vim.keymap.set('n', 'ds', vim.lsp.buf.hover, {})
+    -- vim.keymap.set('n', 'dh', vim.lsp.buf.signature_help, {})
+    vim.api.nvim_command('autocmd CursorHold * lua vim.lsp.buf.signature_help()')
 end)
+
 
 lsp.ensure_installed({
     'tsserver',
