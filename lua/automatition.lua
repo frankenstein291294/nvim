@@ -30,3 +30,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     --[[     \ lua vim.highlight.on_yank{higroup="IncSearch", timeout=500, on_visual=true} ]]
     --[[ augroup END ]]
 --[[ <]) ]]
+
+
+

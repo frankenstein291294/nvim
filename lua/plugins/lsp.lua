@@ -1,22 +1,42 @@
 
-local lsp = require('lsp-zero').preset({})
+local lsp = require('lsp-zero').preset({
+    float_border = 'none',
+    configure_diagnostics = false,
+})
 
 lsp.on_attach(function(client, bufnr)
     lsp.default_keymaps({buffer = bufnr})
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
     vim.keymap.set('n', 'ds', vim.lsp.buf.hover, {})
-    -- vim.keymap.set('n', 'dh', vim.lsp.buf.signature_help, {})
-    vim.api.nvim_command('autocmd CursorHold * lua vim.lsp.buf.signature_help()')
-end)
+    vim.keymap.set('n', 'dh', vim.lsp.buf.signature_help, {})
+    -- vim.api.nvim_command('autocmd CursorHold * lua vim.lsp.buf.signature_help()')
 
+    vim.keymap.set({'n', 'x'}, 'gq', function()
+        vim.lsp.buf.format({async = false, timeout_ms = 10000})
+    end, {})
+
+    vim.diagnostic.config({
+        virtual_text = true,
+    })
+
+end)
 
 lsp.ensure_installed({
     'tsserver',
     'eslint',
 })
 
+lsp.set_sign_icons({
+  error = '✘',
+  warn = '▲',
+  hint = '⚑',
+  info = '»'
+})
+
 lsp.setup()
 
+
+--[[ Autocompletion ]]
 
 local cmp = require('cmp')
 require('luasnip.loaders.from_vscode').lazy_load()
