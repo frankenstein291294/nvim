@@ -1,37 +1,30 @@
 vim.notify = require("notify")
 
-local icons = {
-    success = '',
-    error = '✘',
-    warn = '▲',
-    hint = '⚑',
-    info = ''
-}
+vim.notify.setup({
+    background_colour = "NotifyBackground",
+    fps = 30,
+    icons = { DEBUG = "", ERROR = "", INFO = "", TRACE = "✎", WARN = "" },
+    render = "default", -- default, minimal, simple, compact
+    stages = 'slide',   -- fade_in_slide_out, fade, slide, static
+    level = 2,
+    -- max_width = nil,
+    top_down = true,
+})
 
--- Type errros = error, vim.log.levels.WARN, nil
--- Render style = default, minimal, simple, compact
--- Stages = fade_in_slide_out, fade, slide, static
-
-function nofication(title_message, message, type, time, ico, style, width, animation)
-    vim.notify.setup({
-        render = style,
-        max_width = width,
-        stages = animation,
-    })
+function nofication(title_message, message, type, time, wth)
+    vim.notify.setup({max_width = wth})
     vim.notify(message, type, {
         title = title_message,
         timeout = time,
-        icon = ico,
-        mode = "async",
     })
 end
 
 --[[ Welcome Notification ]]
-nofication("Welcome", "Keep hard working", nil, 500, icons.success, "default", 20, "fade")
-
+nofication("Welcome", "Keep hard working", nil, 500, nil)
 
 --[[ Notification to save file ]]
-vim.cmd [[
-    autocmd BufWritePost * lua nofication( "Saved success", "", nil, 100, '', "compact", 20, "slide" )
-]]
---autocmd BufWritePost * lua nofication( "Saved success", vim.fn.expand("%"), nil, 100, "compact", 20, "slide" )
+--
+vim.api.nvim_command("autocmd BufWritePost * lua nofication( 'Saved success', vim.fn.expand('%'), nil, 100, nil )")
+--[[ vim.cmd [[ ]]
+    --[[ autocmd BufWritePost * lua nofication( "Saved success", vim.fn.expand("%"), 'error', 100 ) ]]
+--[[ <] ]]
