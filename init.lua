@@ -7,6 +7,7 @@ require('plugins.treesitter')
 require('plugins.lsp')
 require('plugins.theme')
 require('plugins.showNotify')
+require('plugins.codewindow')
 
 require('plugins.nvim-tree')
 require('plugins.ranger')

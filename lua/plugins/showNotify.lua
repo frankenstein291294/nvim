@@ -12,7 +12,7 @@ vim.notify.setup({
 })
 
 function nofication(title_message, message, type, time, wth)
-    vim.notify.setup({max_width = wth})
+    -- vim.notify.setup({max_width = wth})
     vim.notify(message, type, {
         title = title_message,
         timeout = time,
@@ -24,7 +24,7 @@ nofication("Welcome", "Keep hard working", nil, 500, nil)
 
 --[[ Notification to save file ]]
 --
-vim.api.nvim_command("autocmd BufWritePost * lua nofication( 'Saved success', vim.fn.expand('%'), nil, 100, nil )")
+-- vim.api.nvim_command("autocmd BufWritePost * lua nofication( 'Saved success', vim.fn.expand('%'), nil, 50, nil )")
 --[[ vim.cmd [[ ]]
     --[[ autocmd BufWritePost * lua nofication( "Saved success", vim.fn.expand("%"), 'error', 100 ) ]]
 --[[ <] ]]
