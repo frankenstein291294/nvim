@@ -104,23 +104,23 @@ mapper("n", "<F4>", ":e ~/.config/nvim/init.lua<CR>")
 --[[--
 --    FZF
 --]]
-mapper("n", "<Leader>e", ":Files<CR>")
+mapper("n", "<Leader>f", ":Files<CR>")
 
 
 --[[--
 --    Nvim tree
 --]]
-mapper("n", "<Leader>nt", ":NvimTreeToggle<CR>")
-mapper("n", "<Leader>nr", ":NvimTreeFocus<CR>")
-mapper("n", "<Leader>nf", ":NvimTreeFindFile<CR>")
-mapper("n", "<Leader>nc", ":NvimTreeCollapse<CR>")
+mapper("n", "<Leader>e", ":Neotree<CR>")
+--mapper("n", "<Leader>nr", ":NvimTreeFocus<CR>")
+--mapper("n", "<Leader>nf", ":NvimTreeFindFile<CR>")
+--mapper("n", "<Leader>nc", ":NvimTreeCollapse<CR>")
 
 
 --[[--
 --    RANGER
 --]]
 --Open ranger
-mapper("n", "<Leader>f", ":RnvimrToggle<CR>")
+mapper("n", "<Leader>r", ":RnvimrToggle<CR>")
 
 
 --[[--
