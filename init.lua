@@ -10,6 +10,8 @@ require('plugins.showNotify')
 require('plugins.codewindow')
 
 --require('plugins.nvim-tree')
+require('plugins.neo-tree')
+require('plugins.bufferline')
 require('plugins.ranger')
 require('plugins.bookmarks')
 
