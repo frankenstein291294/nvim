@@ -41,9 +41,57 @@ return require('packer').startup(function(use)
 
     }
 
+    -- Lsp colors
+    use 'folke/lsp-colors.nvim'
+
+    -- Notify
     use 'rcarriga/nvim-notify'
-    use 'vim-airline/vim-airline'
-    use 'vim-airline/vim-airline-themes'
+    --use 'vim-airline/vim-airline'
+    --use 'vim-airline/vim-airline-themes'
+
+    -- Lua line
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
+
+    -- Fine cmd line
+    use {
+        'VonHeikemen/fine-cmdline.nvim',
+        requires = {
+            {'MunifTanjim/nui.nvim'}
+        }
+    }
+
+    -- Which key
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end
+    }
+
+    -- Mini Surround
+    use { 'echasnovski/mini.nvim', branch = 'stable' }
+	use { 'echasnovski/mini.surround', branch = 'stable' }
+
+    -- Todo comments
+    use {
+        'folke/todo-comments.nvim',
+        requires = 'nvim-lua/plenary.nvim'
+    }
+
+    -- Persistence
+    --use {
+        --"folke/persistence.nvim",
+        --event = "BufReadPre", -- this will only start session saving when an actual file was opened
+        --opts = {
+            --dir = vim.fn.expand(vim.fn.stdpath("state") .. "/sessions/"), -- directory where session files are saved
+            --options = { "buffers", "curdir", "tabpages", "winsize" }, -- sessionoptions used for saving
+            --pre_save = nil, -- a function to call before saving the session
+        --}
+    --}
 
     -- Database management
     use 'tpope/vim-dadbod'
@@ -140,11 +188,9 @@ return require('packer').startup(function(use)
             vim.fn.sign_define("DiagnosticSignHint",
             {text = "󰌵", texthl = "DiagnosticSignHint"})
 
-            
-
-    vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
-end
-}
+            vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+        end
+        }
 
     -- Ranger
     use 'kevinhwang91/rnvimr'
