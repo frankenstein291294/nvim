@@ -31,12 +31,30 @@ mapper("n", "<Leader>ch", ":nohlsearch<CR>")
 --Prev tab
 --mapper("n", "<S-TAB>", "gT")
 --Move next tab
---mapper("n", "<Leader>.", ":tabmove +<CR>")
+mapper("n", "<Leader>.", ":tabmove +<CR>")
 --Move prev tab
---mapper("n", "<Leader>,", ":tabmove -<CR>")
+mapper("n", "<Leader>,", ":tabmove -<CR>")
 --New tab
 mapper("n", "<Leader>nt", ":tabnew<CR>")
 
+
+--[[--
+--    BUFFERS
+--]]
+--Delete buffers
+mapper("n", "<Leader>bd", ":bd<CR>")
+--List buffers
+mapper("n", "<Leader>bl", ":buffers<CR>")
+--Buffer next
+--mapper("n", "<Leader>bn", ":bnext<CR>")
+mapper("n", "<TAB>", ":BufferLineCycleNext<CR>")
+--Buffer previous
+--mapper("n", "<Leader>bp", ":bprevious<CR>")
+mapper("n", "<S-TAB>", ":BufferLineCyclePrev<CR>")
+--Move next buffer
+--mapper("n", "<Leader>.", ":BufferLineMoveNext<CR>")
+--Move prev buffer
+--mapper("n", "<Leader>,", ":BufferLineMovePrev<CR>")
 
 
 --[[--
@@ -65,25 +83,6 @@ vim.api.nvim_set_keymap("n", "<leader>pl", [[<cmd>lua require("persistence").loa
 
 -- stop Persistence => session won't be saved on exit
 vim.api.nvim_set_keymap("n", "<leader>pd", [[<cmd>lua require("persistence").stop()<cr>]], {})
-
-
---[[--
---    BUFFERS
---]]
---Delete buffers
-mapper("n", "<Leader>bd", ":bd<CR>")
---List buffers
-mapper("n", "<Leader>bl", ":buffers<CR>")
---Buffer next
---mapper("n", "<Leader>bn", ":bnext<CR>")
-mapper("n", "<TAB>", ":BufferLineCycleNext<CR>")
---Buffer previous
---mapper("n", "<Leader>bp", ":bprevious<CR>")
-mapper("n", "<S-TAB>", ":BufferLineCyclePrev<CR>")
---Move next buffer
-mapper("n", "<Leader>.", ":BufferLineMoveNext<CR>")
---Move prev buffer
-mapper("n", "<Leader>,", ":BufferLineMovePrev<CR>")
 
 
 --[[--
