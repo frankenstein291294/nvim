@@ -144,10 +144,10 @@ mapper("n", "<Leader>f", ":Files<CR>")
 --[[--
 --    Nvim tree
 --]]
-mapper("n", "<Leader>e", ":Neotree toggle<CR>")
---mapper("n", "<Leader>nr", ":NvimTreeFocus<CR>")
---mapper("n", "<Leader>nf", ":NvimTreeFindFile<CR>")
---mapper("n", "<Leader>nc", ":NvimTreeCollapse<CR>")
+mapper("n", "<Leader>e", ":NvimTreeToggle<CR>")
+mapper("n", "<Leader>nf", ":NvimTreeFindFile<CR>")
+mapper("n", "<Leader>nc", ":NvimTreeCollapse<CR>")
+mapper("n", "<Leader>nr", ":NvimTreeFocus<CR>")
 
 
 --[[--
