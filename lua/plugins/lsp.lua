@@ -16,7 +16,7 @@ lsp.on_attach(function(client, bufnr)
     end, {})
 
     vim.diagnostic.config({
-        virtual_text = false,
+        virtual_text = true,
     })
 
 end)

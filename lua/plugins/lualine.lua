@@ -1,6 +1,10 @@
+local lualine_powerline_fonts = 1
+local lualine_awesome_fonts = 1
+local lualine_awesome_font = 'FiraCode Nerd Font'
+
 require('lualine').setup {
     options = {
-        icons_enabled = true,
+        icons_enabled =  true,
         theme = 'auto',
         --component_separators = { left = '', right = ''},
         --section_separators = { left = '', right = ''},
