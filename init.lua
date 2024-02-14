@@ -1,34 +1,31 @@
+-- GLOBAL CONFIG
 require('settings')
 require('keymap')
 require('automatition')
 
 -- PLUGINS
 require('plugins')
--- require('plugins.treesitter')
--- require('plugins.lsp')
--- require('plugins.theme')
--- require('plugins.showNotify')
--- require('plugins.codewindow')
--- require('plugins.lsp-colors')
---
--- require('plugins.nvim-tree')
--- require('plugins.bufferline')
--- require('plugins.ranger')
--- require('plugins.bookmarks')
--- require('plugins.cmdline')
--- require('plugins.whichkey')
--- require('plugins.minisurround')
--- require('plugins.todocomment')
--- require('plugins.colorizer')
---
--- require('plugins.nerd-comment')
--- require('plugins.neoscroll')
--- require('plugins.indent-blankline')
+
+-- PLUGINS CONFIG
+require('plugins.theme')
+require('plugins.lsp')
+require('plugins.lsp-colors')
+require('plugins.treesitter')
+require('plugins.indent-blankline')
+require('plugins.emmet')
+require('plugins.bufferline')
+require('plugins.neoscroll')
+require('plugins.nvim-tree')
+require('plugins.colorizer')
+require('plugins.floaterm')
+require('plugins.lualine')
+require('plugins.nerd-comment')
+require('plugins.minisurround')
+require('plugins.todocomment')
+require('plugins.bookmarks')
+require('plugins.git-signs')
+
+
 -- require('plugins.snippets')
 -- require('plugins.utilsnips-conf')
---
--- require('plugins.emmet')
--- require('plugins.lualine')
--- require('plugins.vim-dadbod-ui')
--- require('plugins.git-signs')
--- require('plugins.floaterm')
+
