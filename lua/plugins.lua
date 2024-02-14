@@ -138,8 +138,8 @@ return require('packer').startup(function(use)
 
 
 
---     -- Load config depend on current directory
---     use 'windwp/nvim-projectconfig'
+    -- Load config depend on current directory
+    use 'windwp/nvim-projectconfig'
 
 --     -- Sintax JavaScript
 --     use 'pangloss/vim-javascript'
