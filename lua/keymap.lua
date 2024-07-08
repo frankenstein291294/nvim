@@ -67,7 +67,7 @@ mapper("n", "<Leader>t", ":TodoLocList<CR>")
 --    WHICH KEY
 --]]
 --opend which key
-mapper("n", "<SPACE>", "::WhichKey<CR>")
+-- mapper("n", "<SPACE>", "::WhichKey<CR>")
 
 
 --[[--
@@ -138,6 +138,16 @@ mapper("n", "<F4>", ":e ~/.config/nvim/init.lua<CR>")
 --    FZF
 --]]
 mapper("n", "<Leader>f", ":Files<CR>")
+
+
+--[[--
+--    TELESCOPE
+--]]
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 
 --[[--

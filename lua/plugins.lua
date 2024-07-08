@@ -5,9 +5,11 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- Theme
+    -- Themes
     use({ "catppuccin/nvim", as = "catppuccin" })
-     use "rebelot/kanagawa.nvim"
+    use "rebelot/kanagawa.nvim"
+    use ({ "rose-pine/neovim", as = "rose-pine" })
+    use { "scottmckendry/cyberdream.nvim" }
 
      -- Treesitter
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
@@ -90,8 +92,15 @@ return require('packer').startup(function(use)
     use 'norcalli/nvim-colorizer.lua'
 
     -- FZF
-    use 'junegunn/fzf'
-    use 'junegunn/fzf.vim'
+    -- use 'junegunn/fzf'
+    -- use 'junegunn/fzf.vim'
+
+
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.8',
+        -- or                            , branch = '0.1.x',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
 
     -- Vim Flaterm
     use 'voldikss/vim-floaterm'

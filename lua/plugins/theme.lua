@@ -3,11 +3,13 @@ function UseColorScheme(color)
     vim.o.termguicolors = true
     vim.o.background = 'dark'
     vim.g.rehash256 = 1
-    vim.o.t_Co = 256
+    -- vim.o.t_Co = 256
     vim.g.one_allow_italics = 1
 
-    color = color or 'catppuccin'
-	-- color = color or 'kanagawa'
+    -- color = color or 'catppuccin'
+    color = color or 'cyberdream'
+    -- color = color or 'rose-pine'
+    -- color = color or 'kanagawa'
 	vim.cmd.colorscheme(color)
 
 
@@ -26,8 +28,8 @@ function UseColorScheme(color)
     vim.cmd('hi LineNr ctermbg=Black')
 
     --=== COLOR COLUMN
-    vim.o.colorcolumn = 80
-    vim.cmd('hi ColorColumn ctermbg=Black guibg=black')
+    vim.o.colorcolumn = '80'
+    vim.cmd('hi ColorColumn ctermbg=gray guibg=gray')
 
     vim.cmd('hi SpellBad guibg=#D00000 guifg=#ffffff')
 
