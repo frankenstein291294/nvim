@@ -105,6 +105,11 @@ return require('packer').startup(function(use)
     -- Vim Flaterm
     use 'voldikss/vim-floaterm'
 
+    -- ToggleTerm
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup()
+    end}
+
     -- Lua line
     use {
         'nvim-lualine/lualine.nvim',

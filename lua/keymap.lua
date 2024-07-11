@@ -83,6 +83,11 @@ vim.api.nvim_set_keymap("n", "<leader>pl", [[<cmd>lua require("persistence").loa
 -- stop Persistence => session won't be saved on exit
 vim.api.nvim_set_keymap("n", "<leader>pd", [[<cmd>lua require("persistence").stop()<cr>]], {})
 
+--[[--
+--    TOGGLETERM
+--]]
+mapper("n", "<Leader>sh", ":ToggleTerm<CR>")
+vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
 
 --[[--
 --    SPLITS
@@ -92,7 +97,7 @@ mapper("n", "<Leader>v", ":vsp<CR>")
 --Open split horizontal
 mapper("n", "<Leader>x", ":sp<CR>")
 --Open split konsole
-mapper("n", "<Leader>sh", ":split<CR>:ter<CR>:resize 10<CR>")
+--mapper("n", "<Leader>sh", ":split<CR>:ter<CR>:resize 10<CR>")
 
 
 --[[--
