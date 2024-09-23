@@ -110,7 +110,8 @@ vim.g.loaded_netrwPlugin = 1
          group_empty = true,
      },
      filters = {
-         dotfiles = true,
+         dotfiles = false,
+         custom = { "node_modules" },
      },
  })
 

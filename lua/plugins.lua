@@ -92,15 +92,8 @@ return require('packer').startup(function(use)
     use 'norcalli/nvim-colorizer.lua'
 
     -- FZF
-    -- use 'junegunn/fzf'
-    -- use 'junegunn/fzf.vim'
-
-
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.8',
-        -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
-    }
+    use 'junegunn/fzf'
+    use 'junegunn/fzf.vim'
 
     -- Vim Flaterm
     use 'voldikss/vim-floaterm'
@@ -142,7 +135,6 @@ return require('packer').startup(function(use)
     use 'tpope/vim-fugitive'
     use 'tpope/vim-rhubarb'
 
-
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     use 'lewis6991/gitsigns.nvim'
 
@@ -150,22 +142,7 @@ return require('packer').startup(function(use)
     use 'rudylee/nvim-gist'
 
 
-
-
     -- Load config depend on current directory
     use 'windwp/nvim-projectconfig'
-
---     -- Sintax JavaScript
---     use 'pangloss/vim-javascript'
---
---     -- React Sintax
---     use 'neoclide/vim-jsx-improve'
---
---     -- Snippets to javascript
---     --use 'SirVer/ultisnips'
---     --use 'mlaursen/vim-react-snippets'
---
---     use 'joukevandermaas/vim-ember-hbs'
---
 
 end)

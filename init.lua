@@ -27,7 +27,3 @@ require('plugins.todocomment')
 require('plugins.bookmarks')
 require('plugins.git-signs')
 
-
--- require('plugins.snippets')
--- require('plugins.utilsnips-conf')
-

@@ -9,6 +9,7 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
     vim.keymap.set('n', 'ds', vim.lsp.buf.hover, {})
     vim.keymap.set('n', 'dh', vim.lsp.buf.signature_help, {})
+    -- vim.api.nvim_command('autocmd CursorHold * lua vim.lsp.buf.hover()')
     -- vim.api.nvim_command('autocmd CursorHold * lua vim.lsp.buf.signature_help()')
 
     vim.keymap.set({'n', 'x'}, 'gq', function()
@@ -22,7 +23,8 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.ensure_installed({
-    'tsserver',
+    -- 'tsserver',
+    'ts_ls',
     'eslint',
 })
 

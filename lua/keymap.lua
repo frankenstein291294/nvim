@@ -125,10 +125,12 @@ mapper("n", "<Leader>dl", ":t.<CR>")
 --]]
 --Open Firefox
 mapper("n", "<F12>f", ":exe ':silent !firefox % &'<CR>")
+--Open Firefox developer edition
+mapper("n", "<F12>d", ":exe ':silent !/opt/firefox-developer-edition/firefox % &'<CR>")
 --Open Google chrome
 mapper("n", "<F12>g", ":exe ':silent !google-chrome % &'<CR>")
 --Open brave
-mapper("n", "<F12>b", ":exe ':silent !brave % &'<CR>")
+mapper("n", "<F12>b", ":exe ':silent !brave-browser-stable % &'<CR>")
 
 
 
@@ -148,11 +150,11 @@ mapper("n", "<Leader>f", ":Files<CR>")
 --[[--
 --    TELESCOPE
 --]]
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+--[[ local builtin = require('telescope.builtin') ]]
+--[[ vim.keymap.set('n', '<leader>ff', builtin.find_files, {}) ]]
+--[[ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {}) ]]
+--[[ vim.keymap.set('n', '<leader>fb', builtin.buffers, {}) ]]
+--[[ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {}) ]]
 
 
 --[[--
