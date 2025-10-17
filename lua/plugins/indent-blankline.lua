@@ -23,4 +23,4 @@ end)
 
 -- require("ibl").setup { indent = { highlight = highlight } }
 
-require("ibl").setup()
+-- require("ibl").setup()
