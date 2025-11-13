@@ -1,109 +1,95 @@
--- Instalar Mason y mason-lspconfig primero
-require('mason').setup()
-require('mason-lspconfig').setup({
-  ensure_installed = {'ts_ls', 'eslint'}  -- Usar ts_ls en lugar de tsserver
+
+local lsp = require('lsp-zero').preset({
+    float_border = 'none',
+    configure_diagnostics = false,
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+lsp.on_attach(function(client, bufnr)
+    lsp.default_keymaps({buffer = bufnr})
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+    vim.keymap.set('n', 'ds', vim.lsp.buf.hover, {})
+    vim.keymap.set('n', 'dh', vim.lsp.buf.signature_help, {})
+    -- vim.api.nvim_command('autocmd CursorHold * lua vim.lsp.buf.hover()')
+    -- vim.api.nvim_command('autocmd CursorHold * lua vim.lsp.buf.signature_help()')
 
--- Configuración base para todos los servidores LSP
-local on_attach = function(client, bufnr)
-  -- Keymaps
-  local opts = { buffer = bufnr }
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-  vim.keymap.set('n', 'ds', vim.lsp.buf.hover, opts)
-  vim.keymap.set('n', 'dh', vim.lsp.buf.signature_help, opts)
-  
-  vim.keymap.set({'n', 'x'}, 'gq', function()
-    vim.lsp.buf.format({async = false, timeout_ms = 10000})
-  end, opts)
+    vim.keymap.set({'n', 'x'}, 'gq', function()
+        vim.lsp.buf.format({async = false, timeout_ms = 10000})
+    end, {})
 
-  vim.diagnostic.config({
-    virtual_text = true,
-  })
-end
+    vim.diagnostic.config({
+        virtual_text = true,
+    })
 
--- CONFIGURACIÓN MODERNA (Neovim 0.11+) - SIN lspconfig
--- Configurar TypeScript usando la nueva API
-vim.lsp.start({
-  name = 'typescript-language-server',
-  cmd = {'typescript-language-server', '--stdio'},
-  root_dir = vim.fs.dirname(vim.fs.find({'package.json', 'tsconfig.json', 'jsconfig.json'}, { upward = true })[1]),
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    typescript = {
-      inlayHints = {
-        includeInlayParameterNameHints = 'all',
-        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayVariableTypeHints = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayEnumMemberValueHints = true,
-      }
+end)
+
+lsp.ensure_installed({
+    -- 'tsserver',
+    'ts_ls',
+    'eslint',
+})
+
+lsp.set_sign_icons({
+  error = '✘',
+  warn = '▲',
+  hint = '⚑',
+  info = '»'
+})
+
+lsp.setup()
+
+
+--[[ Autocompletion ]]
+
+local cmp = require('cmp')
+require('luasnip.loaders.from_vscode').lazy_load()
+
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end,
     },
-    javascript = {
-      inlayHints = {
-        includeInlayParameterNameHints = 'all',
-        includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayVariableTypeHints = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayEnumMemberValueHints = true,
-      }
+    sources = {
+        {name = 'luasnip'},
+        {name = 'nvim_lsp'},
+        {name = 'buffer', keyword_length = 3},
+        {name = 'vsnip'},
+        {name = 'path'},
+    },
+    mapping = {
+        ['<CR>'] = cmp.mapping.confirm({select = false}),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+    },
+    completion = {
+        completeopt = 'menu,menuone,noinsert',
+        preselect = 'always',
+    },
+    sorting = {
+        priority_weight = 2,
+        reverse = true,
+        comparators = {
+            -- Comparador personalizado para priorizar var_dump
+            function(entry1, entry2)
+                local e1_text = entry1.completion_item.label
+                local e2_text = entry2.completion_item.label
+                
+                -- Si uno es var_dump y el otro var_export, priorizar var_dump
+                if e1_text == "var_dump" and e2_text == "var_export" then
+                    return true
+                elseif e1_text == "var_export" and e2_text == "var_dump" then
+                    return false
+                end
+                
+                return nil
+            end,
+            cmp.config.compare.offset,
+            cmp.config.compare.score,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+        },
     }
-  }
-})
-
--- Configurar ESLint usando la nueva API
-vim.lsp.start({
-  name = 'eslint',
-  cmd = {'vscode-eslint-language-server', '--stdio'},
-  root_dir = vim.fs.dirname(vim.fs.find({'.eslintrc', '.eslintrc.js', '.eslintrc.json', '.eslintrc.cjs'}, { upward = true })[1]),
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    codeAction = {
-      disableRuleComment = {
-        enable = true,
-        location = "separateLine"
-      },
-      showDocumentation = {
-        enable = true
-      }
-    },
-    codeActionOnSave = {
-      enable = false,
-      mode = "all"
-    },
-    format = true,
-    nodePath = "",
-    onIgnoredFiles = "off",
-    packageManager = "npm",
-    quiet = false,
-    rulesCustomizations = {},
-    run = "onType",
-    useESLintClass = false,
-    validate = "on",
-    workingDirectory = {
-      mode = "location"
-    },
-    workingDirectories = nil,
-  }
-})
-
--- Configurar signos de diagnóstico
-vim.fn.sign_define('DiagnosticSignError', {text = '✘', texthl = 'DiagnosticSignError'})
-vim.fn.sign_define('DiagnosticSignWarn', {text = '▲', texthl = 'DiagnosticSignWarn'})
-vim.fn.sign_define('DiagnosticSignHint', {text = '⚑', texthl = 'DiagnosticSignHint'})
-vim.fn.sign_define('DiagnosticSignInfo', {text = '»', texthl = 'DiagnosticSignInfo'})
-
--- Configuración adicional para LSP
-vim.api.nvim_create_autocmd('LspAttach', {
-  desc = 'LSP actions',
-  callback = function(event)
-    -- Aquí puedes agregar más configuraciones que se apliquen a todos los LSP
-  end
 })
