@@ -1,19 +1,13 @@
---Key leader
+--[[-- MAP LEADER --]]
 vim.g.mapleader = ';'
 
---[[--
---    FUNTION TO MAPPING
---]]
+--[[-- FUNTION TO MAPPING --]]
 local mapper = function(mode, key, result)
   vim.api.nvim_set_keymap(mode, key, result, {noremap = true, silent = true})
 end
 
--- vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
 
---[[--
---    GLOBAL MAPPING
---]]
-
+--[[-- GLOBAL MAPPING --]]
 --Save File
 mapper("n", "<Leader>w", ":w<CR>")
 --Quit file
@@ -22,9 +16,7 @@ mapper("n", "<Leader>q", ":q<CR>")
 mapper("n", "<Leader>ch", ":nohlsearch<CR>")
 
 
---[[--
---    TABS
---]]
+--[[-- TABS --]]
 --Next tab
 --mapper("n", "<TAB>", "gt")
 --Prev tab
@@ -40,9 +32,7 @@ mapper('n', 't[', '<Cmd>tabprevious<CR>')
 mapper('n', 't]', '<Cmd>tabnext<CR>')
 
 
---[[--
---    BUFFERS
---]]
+--[[-- BUFFERS --]]
 --Delete buffers
 mapper("n", "<Leader>bd", ":bd<CR>")
 --List buffers
@@ -59,42 +49,21 @@ mapper("n", "<Leader>.", ":BufferLineMoveNext<CR>")
 mapper("n", "<Leader>,", ":BufferLineMovePrev<CR>")
 
 
---[[--
---    TODO COMMENTS
---]]
+--[[-- TODO COMMENTS --]]
 --Opens all todos
 mapper("n", "<Leader>t", ":TodoLocList<CR>")
 
 
---[[--
---    WHICH KEY
---]]
---opend which key
--- mapper("n", "<SPACE>", "::WhichKey<CR>")
-
-
---[[--
---    PERSISTENCE
---]]
---opend which key
--- restore the session for the current directory
-vim.api.nvim_set_keymap("n", "<leader>ps", [[<cmd>lua require("persistence").load()<cr>]], {})
-
--- restore the last session
-vim.api.nvim_set_keymap("n", "<leader>pl", [[<cmd>lua require("persistence").load({ last = true })<cr>]], {})
-
--- stop Persistence => session won't be saved on exit
-vim.api.nvim_set_keymap("n", "<leader>pd", [[<cmd>lua require("persistence").stop()<cr>]], {})
-
---[[--
---    TOGGLETERM
---]]
+--[[-- TOGGLETERM --]]
 mapper("n", "<Leader>sh", ":ToggleTerm<CR>")
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
 
---[[--
---    SPLITS
---]]
+
+--[[-- FLOATERM --]]
+mapper('n', '<F6>', ':FloatermToggle<CR>')
+
+
+--[[-- SPLITS --]]
 --Open split vertical
 mapper("n", "<Leader>v", ":vsp<CR>")
 --Open split horizontal
@@ -103,29 +72,22 @@ mapper("n", "<Leader>x", ":sp<CR>")
 --mapper("n", "<Leader>sh", ":split<CR>:ter<CR>:resize 10<CR>")
 
 
---[[--
---    RESIZE AREAS
---]]
+--[[-- RESIZE AREAS --]]
 mapper("n", "<S-h>", ":vertical resize -2<CR>")
 mapper("n", "<S-l>", ":vertical resize +2<CR>")
 mapper("n", "<S-k>", ":resize -2<CR>")
 mapper("n", "<S-j>", ":resize +2<CR>")
 
 
---[[--
---    MOVE LINES OF CODE
---]]
+--[[-- MOVE LINES OF CODE --]]
 mapper("n", "_", ":m .-2<CR>==")
 mapper("n", "+", ":m .+1<CR>==")
 mapper("v", "_", ":m '<-2<CR>gv=gv'")
 mapper("v", "+", ":m '>+1<CR>gv=gv'")
-
 mapper("n", "<Leader>dl", ":t.<CR>")
 
 
---[[--
---    OPEN BROWSERS
---]]
+--[[-- OPEN BROWSERS --]]
 --Open Firefox
 mapper("n", "<F12>f", ":exe ':silent !firefox % &'<CR>")
 --Open Firefox developer edition
@@ -136,49 +98,27 @@ mapper("n", "<F12>g", ":exe ':silent !google-chrome % &'<CR>")
 mapper("n", "<F12>b", ":exe ':silent !brave-browser-stable % &'<CR>")
 
 
-
---[[--
---    OPEN FILES CONF
---]]
+--[[-- OPEN FILES CONF --]]
 --Open file conf of lua
 mapper("n", "<F4>", ":e ~/.config/nvim/init.lua<CR>")
 
 
---[[--
---    FZF
---]]
+--[[-- FZF --]]
 mapper("n", "<Leader>f", ":FZF<CR>")
 
 
---[[--
---    TELESCOPE
---]]
---[[ local builtin = require('telescope.builtin') ]]
---[[ vim.keymap.set('n', '<leader>ff', builtin.find_files, {}) ]]
---[[ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {}) ]]
---[[ vim.keymap.set('n', '<leader>fb', builtin.buffers, {}) ]]
---[[ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {}) ]]
-
-
---[[--
---    Nvim tree
---]]
+--[[-- NVIM TREE --]]
 mapper("n", "<Leader>e", ":NvimTreeToggle<CR>")
 mapper("n", "<Leader>nf", ":NvimTreeFindFile<CR>")
 mapper("n", "<Leader>nc", ":NvimTreeCollapse<CR>")
 mapper("n", "<Leader>nr", ":NvimTreeFocus<CR>")
 
 
---[[--
---    RANGER
---]]
---Open ranger
+--[[-- RANGER --]]
 mapper("n", "<Leader>r", ":RnvimrToggle<CR>")
 
 
---[[--
---    VIMSTARTIFY
---]]
+--[[-- VIMSTARTIFY --]]
 --Main screen
 mapper("n", "<Leader>ms", ":Startify<CR>");
 --Save session
@@ -192,9 +132,7 @@ mapper("n", "<Leader>sd", ":SDelete<CR>");
 
 
 
---[[--
---    BOOKMARKS
---]]
+--[[-- BOOKMARKS --]]
 vim.g.bookmark_no_default_key_mappings = 0
 mapper('n', '<Leader>bm', '<Plug>BookmarkToggle')
 mapper('n', '<Leader>bi', '<Plug>BookmarkAnnotate')
@@ -208,10 +146,7 @@ mapper('n', '<Leader>jj', '<Plug>BookmarkMoveDown')
 mapper('n', '<Leader>gg', '<Plug>BookmarkMoveToLine')
 
 
---[[--
---    NERD COMMENT
---]]
---=== NERD COMMENT ===
+--[[-- NERD COMMENT --]]
 -- *** Comment actual line or selected
 mapper('n', '<Leader>cc', 'NERDCommenterComment<CR>')
 -- *** Equal of cc but anidate
@@ -226,21 +161,11 @@ mapper('n', '<Leader>cA', 'NERDCommenterAppend<CR>')
 mapper('n', '<Leader>cu', 'NERDCommenterUncomment<CR>')
 
 
---[[--
---    COC MARKDOWN
---]]
--- Open markdown
+--[[-- COC MARKDOWN --]]
 mapper("n", "<Leader>om", ":CocCommand markdown-preview-enhanced.openPreview<CR>");
 
---[[--
---    dadbod-ui
---]]
--- Open database management
-mapper("n", "<Leader>nb", ":DBUI<CR>");
 
---[[
--- Comfortable motion
---]]
+--[[ Comfortable motion --]]
 vim.g.comfortable_motion_scroll_down_key = "j"
 vim.g.comfortable_motion_scroll_up_key = "k"
 mapper('n', '<ScrollWheelDown>', ':call comfortable_motion#flick(30)<CR>')
