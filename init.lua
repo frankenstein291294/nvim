@@ -2,6 +2,8 @@
 require('core.configs')
 -- Keymapings
 require('core.keymaps')
+-- Autofunctions
+require('core.autofunctions')
 
 -- Plugins manager
 require("config.lazy")
