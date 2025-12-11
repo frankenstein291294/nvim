@@ -1,3 +1,12 @@
-vim.opt.winborder = 'rounded'
+-- Globals configs
+require('core.configs')
+-- Keymapings
+require('core.keymaps')
 
-require ('config.lazy)
+-- Plugins manager
+require("config.lazy")
+
+-- Theme configs
+require('core.theme')
+-- Language server packages
+require('core.lsp')
