@@ -1,18 +1,19 @@
-
-
 vim.g.coc_node_path = '/home/frank/.nvm/versions/node/v16.14.2/bin/node'
+
 vim.o.encoding = 'utf-8'
 vim.o.compatible = false
 vim.o.spelllang = 'en_us'
 vim.cmd('filetype plugin indent on')
 vim.cmd('syntax enable')
 
+vim.opt.termguicolors = true
 vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.writebackup = false
 vim.opt.updatetime = 100
 vim.opt.shortmess:append('c')
 vim.opt.clipboard = 'unnamedplus'
+vim.opt.winborder = 'rounded'
 vim.opt.mouse = 'a'
 vim.opt.number = true
 vim.opt.relativenumber = true

@@ -35,6 +35,9 @@ mapper("n", "<Leader>.", ":tabmove +<CR>")
 mapper("n", "<Leader>,", ":tabmove -<CR>")
 --New tab
 mapper("n", "<Leader>nt", ":tabnew<CR>")
+mapper("n", "<Leader>tc", ":tabclose<CR>")
+mapper('n', 't[', '<Cmd>tabprevious<CR>')
+mapper('n', 't]', '<Cmd>tabnext<CR>')
 
 
 --[[--
@@ -51,9 +54,9 @@ mapper("n", "<TAB>", ":BufferLineCycleNext<CR>")
 --mapper("n", "<Leader>bp", ":bprevious<CR>")
 mapper("n", "<S-TAB>", ":BufferLineCyclePrev<CR>")
 --Move next buffer
---mapper("n", "<Leader>.", ":BufferLineMoveNext<CR>")
+mapper("n", "<Leader>.", ":BufferLineMoveNext<CR>")
 --Move prev buffer
---mapper("n", "<Leader>,", ":BufferLineMovePrev<CR>")
+mapper("n", "<Leader>,", ":BufferLineMovePrev<CR>")
 
 
 --[[--
@@ -144,7 +147,6 @@ mapper("n", "<F4>", ":e ~/.config/nvim/init.lua<CR>")
 --[[--
 --    FZF
 --]]
---mapper("n", "<Leader>f", ":Files<CR>")
 mapper("n", "<Leader>f", ":FZF<CR>")
 
 

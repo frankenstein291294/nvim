@@ -1,4 +1,12 @@
-require("core.global")
-require("core.keymaps")
+-- Globals configs
+require('core.configs')
+-- Keymapings
+require('core.keymaps')
+
+-- Plugins manager
 require("config.lazy")
-require("core.themes")
+
+-- Theme configs
+require('core.theme')
+-- Language server packages
+require('core.lsp')
