@@ -7,9 +7,11 @@ function UseColorScheme(color)
     vim.g.one_allow_italics = 1
 
     -- HERE SELECT THEME
-    color = color or 'catppuccin'
+    color = color or 'vaporwave' -- onedark | onelight | onedark_vivid | onedark_dark | vaporwave
+    -- color = color or 'catppuccin'
+    -- color = color or 'kanagawa'
     --vim.cmd("colorscheme catppuccin")
-    
+
     -- color = color or 'cyberdream'
     -- color = color or 'rose-pine'
     -- color = color or 'kanagawa'
