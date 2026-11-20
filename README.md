@@ -1,205 +1,283 @@
-# Neovim configuration
-## Personal configuration Neovim
-### Directories TREE
+# 🚀 Mi Configuración de Neovim
+
+Configuración personal de **Neovim** escrita en **Lua**, usando **[lazy.nvim](https://github.com/folke/lazy.nvim)** como gestor de plugins. Está organizada de forma modular para facilitar su mantenimiento y escalabilidad.
+
+![Neovim](https://img.shields.io/badge/Neovim-0.10+-57A143?logo=neovim&logoColor=white)
+![Lua](https://img.shields.io/badge/Lua-5.1-2C2D72?logo=lua&logoColor=white)
+![Lazy.nvim](https://img.shields.io/badge/Plugin%20Manager-lazy.nvim-blueviolet)
+
+---
+
+## 📑 Tabla de Contenidos
+
+- [Requisitos](#-requisitos)
+- [Estructura del Proyecto](#-estructura-del-proyecto)
+- [Archivos Principales](#-archivos-principales)
+- [Plugins por Categoría](#-plugins-por-categoría)
+- [Plugins No Cargados (Lazy Loading)](#-plugins-no-cargados-lazy-loading)
+- [Notas y Recomendaciones](#-notas-y-recomendaciones)
+
+---
+
+## 🧩 Requisitos
+
+- **Neovim** `>= 0.10` (usa `vim.uv` en `lazy.lua`)
+- **Git** (para el bootstrap automático de `lazy.nvim`)
+- **Ripgrep** (`rg`) — recomendado para `fzf` y búsquedas
+- **Nerd Font** — para iconos en `bufferline`, `nvim-tree`, `nvim-web-devicons`, etc.
+- **Node.js** — requerido por algunos LSPs instalados vía `mason`
+- **tmux** — si quieres aprovechar `vim-tmux-navigator`
+
+---
+
+## 📁 Estructura del Proyecto
+
+```text
+.
+├── init.lua                     # Punto de entrada principal
+├── lazy-lock.json               # Lockfile de versiones de plugins
+├── README.md                    # Documentación del proyecto
+└── lua/
+    ├── config/
+    │   └── lazy.lua             # Bootstrap + setup de lazy.nvim
+    ├── core/
+    │   ├── autofunctions.lua    # Funciones auxiliares / autocmds
+    │   ├── configs.lua          # Opciones globales (vim.opt)
+    │   ├── keymaps.lua          # Atajos de teclado globales
+    │   ├── lsp.lua              # Config LSP a bajo nivel (on_attach, caps)
+    │   └── theme.lua            # Aplica el colorscheme activo
+    └── plugins/
+        ├── autopairs.lua        # auto-pairs (cierre automático)
+        ├── autosave.lua         # auto-save.nvim
+        ├── bookmarks.lua        # vim-bookmarks
+        ├── bufferline.lua       # bufferline.nvim
+        ├── colorpicker.lua      # vCoolor.vim
+        ├── comment.lua          # Comment.nvim
+        ├── emmet-vim.lua        # emmet-vim
+        ├── floaterm.lua         # floaterm + volt (lazy: :FloatermToggle)
+        ├── fzf.lua              # fzf (fuzzy finder)
+        ├── gitsigns.lua         # gitsigns.nvim
+        ├── indent-blankline.lua # indent-blankline.nvim
+        ├── lsp/                 # ── Config LSP / autocompletado ──
+        │   ├── cmp.lua          # nvim-cmp + fuentes + LuaSnip
+        │   └── mason.lua        # mason + mason-lspconfig + lspconfig
+        ├── markdown-preview.lua # markdown-preview.nvim (lazy: :MarkdownPreview)
+        ├── mini-surround.lua    # mini.surround
+        ├── multicursors.lua     # vim-visual-multi
+        ├── neoscroll.lua        # neoscroll.nvim (scroll suave)
+        ├── nvim-colorizer.lua   # nvim-colorizer (resalta colores)
+        ├── nvim-tree.lua        # nvim-tree.lua (explorador)
+        ├── startify.lua         # vim-startify
+        ├── themes/              # ── Colorschemes ──
+        │   ├── capptuccin.lua   # catppuccin
+        │   ├── kanagawa.lua     # kanagawa
+        │   └── onedark.lua      # onedarkpro
+        ├── tmux-navigator.lua   # vim-tmux-navigator
+        ├── todo-comments.lua    # todo-comments.nvim (TODO / FIXME / NOTE)
+        ├── toggleterm.lua       # toggleterm.nvim
+        ├── treesitter.lua       # nvim-treesitter
+        └── windwp.lua           # 
 ```
-├── coc-settings.json
-├── init.lua
-├── lua
-│   ├── keymappings.lua
-│   ├── plugins
-│   │   ├── autosave.lua
-│   │   ├── bookmarks.lua
-│   │   ├── coc.lua
-│   │   ├── coc-snippets.lua
-│   │   ├── codi-conf.lua
-│   │   ├── colorizer.lua
-│   │   ├── dashboard.lua
-│   │   ├── emmet.lua
-│   │   ├── git-nvim.lua
-│   │   ├── indent-blankline.lua
-│   │   ├── lualine.lua
-│   │   ├── neoscroll.lua
-│   │   ├── nerdcommenter.lua
-│   │   ├── nerdtree.lua
-│   │   ├── newpaper.lua
-│   │   ├── ranger.lua
-│   │   ├── self-statusline.lua
-│   │   ├── self-tabline.lua
-│   │   ├── sessions.lua
-│   │   ├── themes.lua
-│   │   ├── vim-dadbod-ui.lua
-│   │   └── vim-startify.lua
-│   ├── plugins.lua
-│   └── settings.lua
-└── README.md
-```
-### Plugins
 
-* ##### packer | management packer for neovim - lua based
-  ```
-  use 'wbthomason/packer.nvim'
-  ```
+---
 
-* ##### Themes
-  ```
-  use {'dracula/vim', as = 'dracula'}
-  use 'tomasr/molokai'
-  use 'rakr/vim-one'
-  use 'ayu-theme/ayu-vim'
-  use 'drewtempelmeyer/palenight.vim'
-  use 'morhetz/gruvbox'
-  use "yorik1984/newpaper.nvim"
-  ```
+## 🛠️ Archivos Principales
 
-* ##### LuaLine
-  ```
-  use {
-    'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
-  ```
+### `init.lua`
 
-* ##### Databases management
-  ```
-  use 'tpope/vim-dadbod'
-  use 'kristijanhusak/vim-dadbod-ui'
-  ```
+Punto de entrada. Carga los módulos en el orden correcto:
 
-* ##### Tmux navigator | Navigation between panels
-  ```
-  use 'christoomey/vim-tmux-navigator'
-  ```
+| Orden | Módulo                     | Propósito                              |
+|-------|----------------------------|----------------------------------------|
+| 1     | `core.configs`             | Opciones globales (`vim.opt`)          |
+| 2     | `core.keymaps`             | Atajos de teclado globales             |
+| 3     | `core.autofunctions`       | Funciones auxiliares / autocmds        |
+| 4     | `config.lazy`              | Inicializa `lazy.nvim` con los specs   |
+| 5     | `core.theme`               | Aplica el colorscheme seleccionado     |
+| 6     | `core.lsp`                 | Configuración LSP a bajo nivel         |
 
-* ##### Icons
-  ```
-  use 'ryanoasis/vim-devicons'
-  use 'kyazdani42/nvim-web-devicons'
-  ```
+### `lua/config/lazy.lua`
 
-* ##### Plugins to IDE |
-  * ###### FZF | fuzzy finder
-    ```
-    use 'junegunn/fzf'
-    use 'junegunn/fzf.vim'
-    ```
+- **Bootstrap** automático: si `lazy.nvim` no está instalado, lo clona desde GitHub.
+- **Specs** importados:
+  - `plugins` (raíz)
+  - `plugins/lsp`
+  - `plugins/themes`
+- **Opciones destacadas**:
+  - `install.colorscheme = "habamax"` — tema temporal durante instalaciones.
+  - `checker.enabled = false` — no busca actualizaciones automáticamente.
+  - `change_detection.enable = true` — detecta cambios en specs al vuelo.
 
-  * ###### NerdTree
-    ```
-    use 'scrooloose/nerdtree'
-    ```
+---
 
-  * ###### Ranger
-    ```
-    use 'kevinhwang91/rnvimr'
-    ```
+## 🎯 Plugins por Categoría
 
-  * ###### Dashboard
-    ```
-    use 'itchyny/vim-gitbranch'
-    use 'mhinz/vim-startify'
-    ```
+> Total: **41 plugins** (38 cargados + 3 en lazy-load).
 
-  * ###### Git
-    ```
-    use {
-      'dinhhuy258/git.nvim'
-    }
-    use 'tpope/vim-fugitive'
-    ```
+### ⚙️ Gestor de Plugins
 
-  * ###### Git | Gisth
-    ```
-    use 'rudylee/nvim-gist'
-    ```
+| Plugin | Descripción |
+|--------|-------------|
+| [lazy.nvim](https://github.com/folke/lazy.nvim) | Gestor de plugins moderno con lazy-loading y UI. |
 
-  * ###### Bookmarks
-    ```
-    use 'MattesGroeger/vim-bookmarks'
-    ```
+---
 
-  * ###### Load config depending of current dir
-    ```
-    use 'windwp/nvim-projectconfig'
-    ```
+### 🎨 Temas / Colorschemes
 
-  * ###### Autofilename
-    ```
-    use 'boundincode/autofilename'
-    ```
+| Plugin | Archivo | Descripción |
+|--------|---------|-------------|
+| [catppuccin](https://github.com/catppuccin/nvim) | `themes/capptuccin.lua` | Tema suave con múltiples flavors. |
+| [kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim) | `themes/kanagawa.lua` | Inspirado en pinturas japonesas. |
+| [onedarkpro.nvim](https://github.com/olimorris/onedarkpro.nvim) | `themes/onedark.lua` | Variante moderna del clásico One Dark. |
 
-  * ###### NerdComment
-    ```
-    use 'preservim/nerdcommenter'
-    ```
+> El tema activo se selecciona en `core/theme.lua`.
 
-  * ###### Multicursors
-    ```
-    use 'mg979/vim-visual-multi'
-    ```
+---
 
-  * ###### Color Picker
-    ```
-    use 'KabbAmine/vCoolor.vim'
-    ```
+### 🧠 LSP, Autocompletado & Snippets
 
-  * ###### Autosave
-    ```
-    use({
-      "Pocco81/auto-save.nvim",
-      config = function()
-      require("auto-save").setup {
-      }
-      end,
-    })
-    ```
+| Plugin | Descripción |
+|--------|-------------|
+| [mason.nvim](https://github.com/williamboman/mason.nvim) | Instalador de LSPs, DAPs y linters. |
+| [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) | Puente entre Mason y `lspconfig`. |
+| [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | Configuraciones base para servidores LSP. |
+| [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) | Motor de autocompletado. |
+| [cmp-buffer](https://github.com/hrsh7th/cmp-buffer) | Fuente: buffers abiertos. |
+| [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) | Fuente: LSP. |
+| [cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua) | Fuente: API de Neovim. |
+| [cmp-path](https://github.com/hrsh7th/cmp-path) | Fuente: rutas del sistema. |
+| [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) | Fuente: snippets de LuaSnip. |
+| [LuaSnip](https://github.com/L3MON4D3/LuaSnip) | Motor de snippets. |
+| [friendly-snippets](https://github.com/rafamadriz/friendly-snippets) | Colección de snippets predefinidos. |
 
-  * ###### Colorizer
-    ```
-    use 'norcalli/nvim-colorizer.lua'
-    ```
+Archivos: `plugins/lsp/mason.lua` y `plugins/lsp/cmp.lua`.
+La configuración a bajo nivel (keymaps LSP, `on_attach`, capacidades) está en `core/lsp.lua`.
 
-  * ###### Smooth scroll
-    ```
-    use 'karb94/neoscroll.nvim'
-    ```
+---
 
-  * ###### Indent blank line
-    ```
-    use 'lukas-reineke/indent-blankline.nvim'
-    ```
+### 🌳 Sintaxis & Parsing
 
-* ##### SYNTAX
-  * ###### COC | Conquer of completion
-    ```
-    use 'neoclide/coc.nvim'
-    ```
+| Plugin | Descripción |
+|--------|-------------|
+| [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Parser incremental para resaltado y plegado. |
 
-  * ###### Autopairs
-    ```
-    use 'jiangmiao/auto-pairs'
-    ```
+Archivo: `plugins/treesitter.lua`.
 
-  * ###### Emmet
-    ```
-    use 'mattn/emmet-vim'
-    ```
+---
 
-  * ###### JavaScript Syntax
-    ```
-    use 'pangloss/vim-javascript'
-    ```
+### 📂 Navegación & Búsqueda
 
-  * ###### Auto Console log // disable
-    ```
-    -- use 'metakirby5/codi.vim'
-    ```
+| Plugin | Descripción |
+|--------|-------------|
+| [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) | Explorador de archivos lateral. |
+| [fzf](https://github.com/junegunn/fzf) | Fuzzy finder. |
+| [nvim-projectconfig](https://github.com/nvim-projectconfig/nvim-projectconfig) | Configuración por proyecto vía `.nvim.lua`. |
+| [vim-startify](https://github.com/mhinz/vim-startify) | Pantalla de inicio con accesos rápidos. |
 
-* ##### Ide flutter
-  * ###### Flutter and dart
-    ```
-    use 'dart-lang/dart-vim-plugin'
-    use 'thosakwe/vim-flutter'
-    use 'natebosch/vim-lsc'
-    use 'natebosch/vim-lsc-dart'
-    ```
+Archivos: `plugins/nvim-tree.lua`, `plugins/fzf.lua`, `plugins/startify.lua`.
 
+---
+
+### ✏️ Edición
+
+| Plugin | Descripción |
+|--------|-------------|
+| [auto-pairs](https://github.com/jiangmiao/auto-pairs) | Cierra automáticamente paréntesis, comillas, etc. |
+| [mini.surround](https://github.com/echasnovski/mini.surround) | Añade/edita/elimina surroundings (comillas, tags, etc.). |
+| [Comment.nvim](https://github.com/numToStr/Comment.nvim) | Comenta/descomenta líneas y bloques. |
+| [nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) | Resalta códigos de color en tiempo real. |
+| [vCoolor.vim](https://github.com/KabbAmine/vCoolor.vim) | Selector de colores visual. |
+| [vim-visual-multi](https://github.com/mg979/vim-visual-multi) | Múltiples cursores. |
+| [neoscroll.nvim](https://github.com/karb94/neoscroll.nvim) | Scroll suave y animado. |
+| [emmet-vim](https://github.com/mattn/emmet-vim) | Expansión de abreviaturas HTML/CSS. |
+
+Archivos: `plugins/autopairs.lua`, `plugins/windwp.lua`, `plugins/mini-surround.lua`, `plugins/comment.lua`, `plugins/nvim-colorizer.lua.lua`, `plugins/colorizer.lua`, `plugins/colorpicker.lua`, `plugins/multicursors.lua`, `plugins/neoscroll.lua`, `plugins/emmet-vim.lua`.
+
+> ⚠️ Nota: tienes `colorizer.lua` **y** `nvim-colorizer.lua.lua` (doble `.lua`). Revisa si es duplicado o si uno quedó obsoleto.
+
+---
+
+### 🎨 UI / Visual
+
+| Plugin | Descripción |
+|--------|-------------|
+| [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) | Barra de buffers tipo pestañas. |
+| [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) | Guías visuales de indentación. |
+| [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) | Iconos por tipo de archivo (dependencia). |
+
+Archivos: `plugins/bufferline.lua`, `plugins/indent-blankline.lua`.
+
+---
+
+### 🐙 Git
+
+| Plugin | Descripción |
+|--------|-------------|
+| [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | Signos de cambios Git en el gutter, hunk actions, blame, etc. |
+
+Archivo: `plugins/gitsigns.lua`.
+
+---
+
+### 💻 Terminal & Tmux
+
+| Plugin | Descripción |
+|--------|-------------|
+| [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) | Terminales flotantes / divididas. |
+| [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator) | Navegación seamless entre splits de Neovim y tmux. |
+| [floaterm](https://github.com/voldikss/vim-floaterm) | Terminal flotante (cargado bajo demanda). |
+| [volt](https://github.com/voldikss/volt) | Dependencia de `floaterm`. |
+
+Archivos: `plugins/toggleterm.lua`, `plugins/tmux-navigator.lua`, `plugins/floaterm.lua`.
+
+---
+
+### 📝 Productividad
+
+| Plugin | Descripción |
+|--------|-------------|
+| [auto-save.nvim](https://github.com/Pocco81/auto-save.nvim) | Guardado automático de buffers. |
+| [vim-bookmarks](https://github.com/MattesGroeger/vim-bookmarks) | Marcadores persistentes en líneas. |
+| [todo-comments.nvim](https://github.com/folke/todo-comments.nvim) | Resalta `TODO`, `FIXME`, `NOTE`, etc. |
+| [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) | Utilidades Lua (dependencia de varios plugins). |
+
+Archivos: `plugins/autosave.lua`, `plugins/bookmarks.lua`, `plugins/todo-comments.lua`.
+
+---
+
+### 📖 Markdown
+
+| Plugin | Descripción |
+|--------|-------------|
+| [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) | Preview de Markdown en el navegador. |
+
+Archivo: `plugins/markdown-preview.lua` (lazy-load por comando `:MarkdownPreview`).
+
+---
+
+## ⏳ Plugins No Cargados (Lazy Loading)
+
+Estos plugins **no se cargan al inicio**; se activan cuando se invoca su comando o se abre un tipo de archivo específico:
+
+| Plugin | Comandos / Evento | Motivo |
+|--------|-------------------|--------|
+| `floaterm` | `:FloatermToggle` | Solo se carga al abrir una terminal flotante. |
+| `markdown-preview.nvim` | `:MarkdownPreview`, `:MarkdownPreviewToggle`, `:MarkdownPreviewStop`, `ft=markdown` | Solo para archivos Markdown. |
+| `volt` | (dependencia de `floaterm`) | Se carga junto con `floaterm`. |
+
+Esto mantiene el arranque de Neovim rápido (~40 ms de carga total de plugins en tu setup).
+
+---
+
+## 📌 Notas y Recomendaciones
+
+1. **`checker.enabled = false`** en `lazy.lua`: las actualizaciones son manuales (`:Lazy update`).
+2. **Tema por defecto**: se define en `core/theme.lua`. Cambia ahí para alternar entre `catppuccin`, `kanagawa` y `onedarkpro`.
+3. **Keymaps**: todos los atajos globales viven en `core/keymaps.lua`; los específicos de LSP en `core/lsp.lua`.
+4. **Añadir nuevos plugins**: crea un archivo en `lua/plugins/<nombre>.lua` y se cargará automáticamente vía `{ import = "plugins" }`.
+
+---
+
+## 📄 Licencia
+
+Uso personal. Siéntete libre de tomar ideas y adaptarlas a tu propio entorno.
