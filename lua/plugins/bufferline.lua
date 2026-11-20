@@ -4,7 +4,7 @@ return {
     config = function ()
         require('bufferline').setup{
             options = {
-                mode = 'buffer',
+                mode = 'buffer', -- buffer | tabs
                 view = 'multiwindow',
                 hover = {
                     enabled = true,

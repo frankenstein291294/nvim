@@ -12,3 +12,4 @@ require("config.lazy")
 require('core.theme')
 -- Language server packages
 require('core.lsp')
+
