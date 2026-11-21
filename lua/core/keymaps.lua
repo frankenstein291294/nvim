@@ -104,7 +104,7 @@ mapper("n", "<F4>", ":e ~/.config/nvim/init.lua<CR>")
 
 
 --[[-- FZF --]]
-mapper("n", "<Leader>f", ":FZF<CR>")
+mapper("n", "<Leader>f", ":FzfLua files<CR>")
 
 
 --[[-- NVIM TREE --]]

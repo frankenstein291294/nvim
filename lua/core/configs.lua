@@ -55,7 +55,7 @@ vim.opt.showmode = false
 vim.opt.hidden = true
 vim.opt.completeopt = {'menuone,noinsert,noselect'}
 --vim.opt.wildmode = {'longest', 'list', 'full'}
-vim.opt.lazyredraw = true
+--vim.opt.lazyredraw = true
 
 vim.opt.sidescrolloff = 8
 vim.opt.title = true
