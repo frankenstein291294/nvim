@@ -12,6 +12,8 @@ end
 mapper("n", "<Leader>w", ":w<CR>")
 --Quit file
 mapper("n", "<Leader>q", ":q<CR>")
+--Quit all files
+mapper("n", "<Leader>z", ":qa<CR>")
 --Clear nohlsearch
 mapper("n", "<Leader>ch", ":nohlsearch<CR>")
 
@@ -51,16 +53,28 @@ mapper("n", "<Leader>,", ":BufferLineMovePrev<CR>")
 
 --[[-- TODO COMMENTS --]]
 --Opens all todos
-mapper("n", "<Leader>t", ":TodoLocList<CR>")
+mapper("n", "<Leader>tl", ":TodoLocList<CR>")
 
 
 --[[-- TOGGLETERM --]]
 mapper("n", "<Leader>sh", ":ToggleTerm<CR>")
-vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
+--vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', {noremap = true})
+vim.api.nvim_create_autocmd("TermOpen", {
+    callback = function(args)
+        -- Solo actúa si el buffer es de ToggleTerm
+        if vim.bo[args.buf].filetype == "toggleterm" then
+            vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {
+                buffer = args.buf,
+                noremap = true,
+                silent = true,
+            })
+        end
+    end,
+})
 
 
 --[[-- FLOATERM --]]
-mapper('n', '<F6>', ':FloatermToggle<CR>')
+mapper('n', '<Leader>r', ':FloatermToggle<CR>')
 
 
 --[[-- SPLITS --]]
@@ -115,7 +129,7 @@ mapper("n", "<Leader>nr", ":NvimTreeFocus<CR>")
 
 
 --[[-- RANGER --]]
-mapper("n", "<Leader>r", ":RnvimrToggle<CR>")
+--mapper("n", "<Leader>r", ":RnvimrToggle<CR>")
 
 
 --[[-- VIMSTARTIFY --]]
