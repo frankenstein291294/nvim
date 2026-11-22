@@ -15,6 +15,11 @@ return -- lazy.nvim
     },
 
     config = function()
+        require("notify").setup({
+            timeout = 1000,
+            stages = "static",
+        })
+
         require("noice").setup({
             lsp = {
                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
