@@ -34,7 +34,7 @@ Configuración personal de **Neovim** escrita en **Lua**, usando **[lazy.nvim](h
 
 ```text
 .
-├── init.lua                     # Punto de entrada principal
+├── init.lua                     # Punto de entrada: require de módulos en orden
 ├── lazy-lock.json               # Lockfile de versiones de plugins
 ├── README.md                    # Documentación del proyecto
 └── lua/
@@ -44,38 +44,42 @@ Configuración personal de **Neovim** escrita en **Lua**, usando **[lazy.nvim](h
     │   ├── autofunctions.lua    # Funciones auxiliares / autocmds
     │   ├── configs.lua          # Opciones globales (vim.opt)
     │   ├── keymaps.lua          # Atajos de teclado globales
-    │   ├── lsp.lua              # Config LSP a bajo nivel (on_attach, caps)
+    │   ├── lsp.lua              # Config LSP (on_attach, capabilities)
     │   └── theme.lua            # Aplica el colorscheme activo
     └── plugins/
-        ├── autopairs.lua        # auto-pairs (cierre automático)
-        ├── autosave.lua         # auto-save.nvim
-        ├── bookmarks.lua        # vim-bookmarks
-        ├── bufferline.lua       # bufferline.nvim
-        ├── colorpicker.lua      # vCoolor.vim
-        ├── comment.lua          # Comment.nvim
-        ├── emmet-vim.lua        # emmet-vim
+        ├── autopairs.lua        # auto-pairs: cierre automático de pares
+        ├── autosave.lua         # auto-save.nvim: guardado automático
+        ├── bookmarks.lua        # vim-bookmarks: marcadores persistentes
+        ├── bufferline.lua       # bufferline.nvim: barra superior de buffers
+        ├── colorpicker.lua      # vCoolor.vim: selector visual de colores
+        ├── comment.lua          # Comment.nvim: comentar/descomentar
+        ├── emmet-vim.lua        # emmet-vim: expansión HTML/CSS
+        ├── flash.lua            # flash.nvim: saltos con etiquetas
         ├── floaterm.lua         # floaterm + volt (lazy: :FloatermToggle)
-        ├── fzf.lua              # fzf (fuzzy finder)
-        ├── gitsigns.lua         # gitsigns.nvim
-        ├── indent-blankline.lua # indent-blankline.nvim
-        ├── lsp/                 # ── Config LSP / autocompletado ──
+        ├── fzf-lua.lua          # fzf-lua: fuzzy finder con preview
+        ├── gitsigns.lua         # gitsigns.nvim: hunks Git en el gutter
+        ├── indent-blankline.lua # indent-blankline: guías de indentación
+        ├── lsp/
         │   ├── cmp.lua          # nvim-cmp + fuentes + LuaSnip
         │   └── mason.lua        # mason + mason-lspconfig + lspconfig
-        ├── markdown-preview.lua # markdown-preview.nvim (lazy: :MarkdownPreview)
-        ├── mini-surround.lua    # mini.surround
-        ├── multicursors.lua     # vim-visual-multi
-        ├── neoscroll.lua        # neoscroll.nvim (scroll suave)
-        ├── nvim-colorizer.lua   # nvim-colorizer (resalta colores)
-        ├── nvim-tree.lua        # nvim-tree.lua (explorador)
-        ├── startify.lua         # vim-startify
-        ├── themes/              # ── Colorschemes ──
+        ├── lualine.lua          # lualine.nvim: statusline inferior
+        ├── markdown-preview.lua # markdown-preview (lazy: :MarkdownPreview)
+        ├── mini-surround.lua    # mini.surround: añadir/editar surrounds
+        ├── multicursors.lua     # vim-visual-multi: múltiples cursores
+        ├── neoscroll.lua        # neoscroll: scroll suave/animado
+        ├── noice_notify.lua     # noice + nvim-notify: UI cmdline/notifs
+        ├── nvim-colorizer.lua   # nvim-colorizer: resalta códigos de color
+        ├── nvim-tree.lua        # nvim-tree: explorador de archivos
+        ├── startify.lua         # vim-startify: pantalla de inicio
+        ├── themes/
         │   ├── capptuccin.lua   # catppuccin
         │   ├── kanagawa.lua     # kanagawa
         │   └── onedark.lua      # onedarkpro
-        ├── tmux-navigator.lua   # vim-tmux-navigator
-        ├── todo-comments.lua    # todo-comments.nvim (TODO / FIXME / NOTE)
-        ├── toggleterm.lua       # toggleterm.nvim
-        ├── treesitter.lua       # nvim-treesitter
+        ├── tmux-navigator.lua   # vim-tmux-navigator: navegar Nvim/tmux
+        ├── todo-comments.lua    # todo-comments: TODO/FIXME/NOTE
+        ├── toggleterm.lua       # toggleterm: terminales flotantes/split
+        ├── treesitter.lua       # nvim-treesitter: parsing/resaltado
+        ├── which-key.lua        # which-key: popup de keymaps
         └── windwp.lua           # 
 ```
 
